@@ -72,6 +72,14 @@ invoke_counter.on_error("NoMatchingError", disconnect)
 flow.compile_to_file("counter_flow.json")
 ```
 
+## Generated Flow Examples
+
+Here's what the generated flows look like in the Amazon Connect console:
+
+![Example Generated Flow](docs/example_generated_flow.png)
+
+![Example Generated Flow 2](docs/example_generate_flow2.png)
+
 ## Features
 
 - Fluent Python API for building flows
