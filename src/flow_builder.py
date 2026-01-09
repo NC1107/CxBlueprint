@@ -4,7 +4,7 @@ Contact Flow Builder - Programmatic flow generation
 from pathlib import Path
 import json
 from typing import List, Optional, Dict, Set, Tuple, TypeVar
-from collections import deque
+from collections import deque, defaultdict
 import uuid
 from blocks.base import FlowBlock
 from blocks.participant_actions import (
@@ -27,30 +27,19 @@ T = TypeVar('T', bound=FlowBlock) # Generic FlowBlock type for method returns
 
 
 class ContactFlowBuilder:
-    """Build contact flows programmatically with BFS-based layout."""
+    """Build contact flows programmatically with layered BFS layout."""
 
     # The Amazon Connect Canvas X increases to the right and Y increases downwards.
-    
-    # Layout constants - Grid-based model (all positions are center-based)
-    GRID_UNIT = 19.2
-    
-    BLOCK_WIDTH_STANDARD = 8 * GRID_UNIT              # 153.6
-    BLOCK_HEIGHT_STANDARD = 4 * GRID_UNIT             # 76.8
-    
-    HORIZONTAL_CENTER_SPACING = 12.0833 * GRID_UNIT  # 232.0 (center to center)
-    
-    # Vertical spacing for conditionals
-    VERTICAL_SPACING_COND_EMPTY = 8.4167 * GRID_UNIT      # 161.6
-    VERTICAL_SPACING_COND_1_OPT = 10.1667 * GRID_UNIT     # 195.2
-    VERTICAL_SPACING_PER_OPTION = 2 * GRID_UNIT           # ~38.4 per extra condition
-    
-    # General vertical spacing (non-conditional)
-    VERTICAL_SPACING = VERTICAL_SPACING_COND_1_OPT
-    
-    COLLISION_PADDING = HORIZONTAL_CENTER_SPACING  # Minimum safe distance
-    
-    START_X = 150
-    START_Y = 40
+    # Block positions represent the top-left corner of the block.
+
+    # Layout constants based on AWS Connect canvas analysis
+    BLOCK_WIDTH = 200           # Estimated block width in pixels
+    BLOCK_HEIGHT_BASE = 100     # Base block height (no conditions)
+    BLOCK_HEIGHT_PER_BRANCH = 25  # Additional height per condition/error branch
+    HORIZONTAL_SPACING = 280    # Pixels between columns (left edge to left edge)
+    VERTICAL_SPACING_MIN = 180  # Minimum vertical spacing between rows
+    START_X = 150               # X position of first column
+    START_Y = 50                # Y position of first row
     
     def __init__(self, name: str, debug: bool = False):
         self.name = name
@@ -211,176 +200,278 @@ class ContactFlowBuilder:
         )
         return self._register_block(block)
     
-    # BFS-based layout algorithm
-    
+    # Layered BFS Layout Algorithm
+    #
+    # This algorithm positions blocks in a grid layout:
+    # - X axis (columns): determined by BFS level from start block
+    # - Y axis (rows): determined by order of discovery, keeping related branches together
+    # - Sequential flow (NextAction) goes horizontally (left to right)
+    # - Branching (Conditions/Errors) fans out vertically (top to bottom)
+
     def _get_block(self, block_id: str) -> Optional[FlowBlock]:
         """Get block by ID."""
         return next((b for b in self.blocks if b.identifier == block_id), None)
-    
-    def _has_collision(self, positions: Dict[str, dict], x: int, y: int, exclude_id: str = None) -> bool:
-        """Check if position collides with existing blocks.
-        
-        Blocks are considered colliding if they're too close together.
-        Allow for proper horizontal spacing of HORIZONTAL_CENTER_SPACING.
+
+    def _get_all_targets(self, block: FlowBlock) -> List[Tuple[str, str]]:
+        """Get all target block IDs from a block's transitions.
+
+        Returns list of (target_id, transition_type) tuples.
+        transition_type is 'next', 'condition', or 'error'.
         """
-        for block_id, pos in positions.items():
-            if exclude_id and block_id == exclude_id:
-                continue
-            
-            x_dist = abs(x - pos["x"])
-            y_dist = abs(y - pos["y"])
-            
-            # Same Y level: allow proper horizontal spacing, but prevent too-close placement
-            if abs(y - pos["y"]) < self.GRID_UNIT:  # Same row (within 1 grid unit)
-                if x_dist < (self.HORIZONTAL_CENTER_SPACING * 0.9):  # Too close horizontally
-                    return True
-            # Different Y levels: use standard collision padding
-            elif x_dist < self.COLLISION_PADDING and y_dist < self.COLLISION_PADDING:
-                return True
-        
-        return False
-    
-    def _find_safe_position(self, positions: Dict[str, dict], start_x: int, start_y: int) -> Tuple[int, int]:
-        """Find safe position starting from given coordinates, moving right."""
-        x = start_x
-        y = start_y
-        
-        # Keep moving right until we find a safe spot
-        max_attempts = 50
-        for _ in range(max_attempts):
-            if not self._has_collision(positions, x, y):
-                return (x, y)
-            x += self.HORIZONTAL_CENTER_SPACING
-        
-        # If still colliding, try next row
-        return (start_x, y + self.VERTICAL_SPACING)
-    
-    def _calculate_positions_bfs(self) -> Dict[str, dict]:
-        """Calculate positions using breadth-first search.
-        
-        BFS ensures all blocks at same depth are positioned before going deeper.
-        This creates a level-by-level layout.
+        targets = []
+        transitions = block.transitions
+
+        # NextAction first (primary path)
+        if transitions.get("NextAction"):
+            targets.append((transitions["NextAction"], "next"))
+
+        # Then conditions (in order)
+        for cond in transitions.get("Conditions", []):
+            if cond.get("NextAction"):
+                targets.append((cond["NextAction"], "condition"))
+
+        # Then errors (in order)
+        for err in transitions.get("Errors", []):
+            if err.get("NextAction"):
+                targets.append((err["NextAction"], "error"))
+
+        return targets
+
+    def _assign_levels(self) -> Dict[str, int]:
+        """Assign each block to a horizontal level (column) using BFS.
+
+        Level 0 is the start block, level 1 is blocks reachable in 1 step, etc.
+        Each block gets assigned to its shortest path level from start.
         """
         if not self._start_action:
             return {}
-        
-        positions = {}
-        visited = set()
-        queued = set()  # Track what's already in queue
-        
-        # BFS queue: (block_id, suggested_x, level, explicit_y=None)
-        queue = deque([(self._start_action, self.START_X, 0, None)])
-        queued.add(self._start_action)
-        
+
+        levels = {}
+        queue = deque([(self._start_action, 0)])
+
         while queue:
-            # Process entire level at once
-            level_size = len(queue)
-            current_level = queue[0][2] if queue else 0
-            level_y = self.START_Y + (current_level * self.VERTICAL_SPACING)
-            
-            for _ in range(level_size):
-                item = queue.popleft()
-                if len(item) == 4:
-                    block_id, suggested_x, level, explicit_y = item
-                else:
-                    block_id, suggested_x, level = item
-                    explicit_y = None
-                
-                if block_id in visited:
-                    continue
-                
-                visited.add(block_id)
-                
-                # Use explicit Y if provided, otherwise use level-based Y
-                target_y = explicit_y if explicit_y is not None else level_y
-                
-                # Find safe position for this block
-                x, y = self._find_safe_position(positions, suggested_x, target_y)
-                
-                # Round to grid unit (19.2)
-                x = round(x / self.GRID_UNIT) * self.GRID_UNIT
-                y = round(y / self.GRID_UNIT) * self.GRID_UNIT
-                
-                positions[block_id] = {"x": x, "y": y}
-                
-                # Get children for next level
+            block_id, level = queue.popleft()
+
+            # Skip if already assigned (keep shortest path level)
+            if block_id in levels:
+                continue
+
+            levels[block_id] = level
+
+            block = self._get_block(block_id)
+            if not block:
+                continue
+
+            # Add all targets to queue at next level
+            for target_id, _ in self._get_all_targets(block):
+                if target_id not in levels:
+                    queue.append((target_id, level + 1))
+
+        return levels
+
+    def _build_parent_map(self) -> Dict[str, List[str]]:
+        """Build a map of block_id -> list of parent block_ids."""
+        parents = defaultdict(list)
+
+        for block in self.blocks:
+            for target_id, _ in self._get_all_targets(block):
+                parents[target_id].append(block.identifier)
+
+        return parents
+
+    def _get_parent_row(self, block_id: str, rows: Dict[str, int],
+                        parent_map: Dict[str, List[str]]) -> int:
+        """Get the minimum row of this block's parents, or 0 if no parents have rows yet."""
+        parent_ids = parent_map.get(block_id, [])
+        parent_rows = [rows[pid] for pid in parent_ids if pid in rows]
+        return min(parent_rows) if parent_rows else 0
+
+    def _build_next_action_map(self) -> Dict[str, str]:
+        """Build a map of block_id -> parent that reaches it via NextAction."""
+        next_action_parent = {}
+
+        for block in self.blocks:
+            transitions = block.transitions
+            if transitions.get("NextAction"):
+                next_action_parent[transitions["NextAction"]] = block.identifier
+
+        return next_action_parent
+
+    def _assign_rows(self, levels: Dict[str, int]) -> Dict[str, int]:
+        """Assign row (Y) positions to blocks within each level.
+
+        Key insight: Blocks reached via NextAction should stay at the same row
+        as their parent (horizontal flow). Only branching (conditions/errors)
+        creates new rows (vertical fan-out).
+        """
+        parent_map = self._build_parent_map()
+        next_action_parent = self._build_next_action_map()
+
+        # Group blocks by level
+        level_groups = defaultdict(list)
+        for block_id, level in levels.items():
+            level_groups[level].append(block_id)
+
+        rows = {}
+        used_rows_per_level = defaultdict(set)  # Track used rows at each level
+
+        # Process levels in order
+        for level in sorted(level_groups.keys()):
+            blocks_at_level = level_groups[level]
+
+            # Sort by parent's row to keep related branches together
+            blocks_at_level.sort(key=lambda bid: self._get_parent_row(bid, rows, parent_map))
+
+            for block_id in blocks_at_level:
+                # Check if this block is reached via NextAction
+                next_parent = next_action_parent.get(block_id)
+
+                if next_parent and next_parent in rows:
+                    # Try to use same row as NextAction parent (horizontal flow)
+                    desired_row = rows[next_parent]
+                    if desired_row not in used_rows_per_level[level]:
+                        rows[block_id] = desired_row
+                        used_rows_per_level[level].add(desired_row)
+                        continue
+
+                # For branching targets or if desired row is taken, find next available
+                min_row = self._get_parent_row(block_id, rows, parent_map)
+
+                # Find first unused row at this level at or after min_row
+                row = min_row
+                while row in used_rows_per_level[level]:
+                    row += 1
+
+                rows[block_id] = row
+                used_rows_per_level[level].add(row)
+
+        return rows
+
+    def _compact_rows(self, rows: Dict[str, int]) -> Dict[str, int]:
+        """Compact row assignments to remove gaps.
+
+        Renumbers rows to be contiguous starting from 0.
+        """
+        if not rows:
+            return rows
+
+        # Get sorted unique row values
+        unique_rows = sorted(set(rows.values()))
+
+        # Create mapping from old row to new compact row
+        row_map = {old: new for new, old in enumerate(unique_rows)}
+
+        # Apply mapping
+        return {block_id: row_map[row] for block_id, row in rows.items()}
+
+    def _get_block_height(self, block: Optional[FlowBlock]) -> int:
+        """Calculate the visual height of a block based on its branches.
+
+        Blocks with more conditions/errors need more vertical space.
+        """
+        if not block:
+            return self.BLOCK_HEIGHT_BASE
+
+        transitions = block.transitions
+        num_conditions = len(transitions.get("Conditions", []))
+        num_errors = len(transitions.get("Errors", []))
+        num_branches = num_conditions + num_errors
+
+        # Base height + additional height per branch
+        height = self.BLOCK_HEIGHT_BASE + (num_branches * self.BLOCK_HEIGHT_PER_BRANCH)
+        return height
+
+    def _calculate_positions(self) -> Dict[str, dict]:
+        """Calculate block positions using layered BFS algorithm.
+
+        Returns dict mapping block_id to {"x": int, "y": int}.
+        """
+        if not self._start_action:
+            return {}
+
+        # Phase 1: Assign levels (columns)
+        levels = self._assign_levels()
+
+        # Phase 2: Assign rows
+        rows = self._assign_rows(levels)
+
+        # Phase 3: Compact rows to remove gaps
+        rows = self._compact_rows(rows)
+
+        # Phase 4: Calculate Y positions based on cumulative heights
+        # Group blocks by row to calculate Y offsets
+        row_blocks = defaultdict(list)
+        for block_id, row in rows.items():
+            row_blocks[row].append(block_id)
+
+        # Calculate the maximum height needed for each row
+        row_heights = {}
+        for row, block_ids in row_blocks.items():
+            max_height = self.VERTICAL_SPACING_MIN
+            for block_id in block_ids:
                 block = self._get_block(block_id)
-                if not block:
-                    continue
-                
-                transitions = block.transitions
-                
-                # Collect all unique children
-                children = []
-                if "NextAction" in transitions and transitions["NextAction"]:
-                    child = transitions["NextAction"]
-                    if child not in visited and child not in queued and child not in children:
-                        children.append(child)
-                
-                if "Conditions" in transitions and transitions["Conditions"]:
-                    for condition in transitions["Conditions"]:
-                        if "NextAction" in condition:
-                            child = condition["NextAction"]
-                            if child not in visited and child not in queued and child not in children:
-                                children.append(child)
-                
-                if "Errors" in transitions and transitions["Errors"]:
-                    for error in transitions["Errors"]:
-                        if "NextAction" in error:
-                            child = error["NextAction"]
-                            if child not in visited and child not in queued and child not in children:
-                                children.append(child)
-                
-                # Queue children
-                # NextAction goes horizontally (same level), others stack vertically
-                next_action = transitions.get("NextAction")
-                condition_index = 0
-                for child_id in children:
-                    if child_id == next_action:
-                        # NextAction: Place horizontally to the right at same level
-                        queue.append((child_id, x + self.HORIZONTAL_CENTER_SPACING, level, None))
-                    else:
-                        # Conditions/Errors: Stack vertically below parent at increasing Y positions
-                        child_y = target_y + self.VERTICAL_SPACING + (condition_index * self.VERTICAL_SPACING)
-                        queue.append((child_id, x, level + 1, child_y))
-                        condition_index += 1
-                    queued.add(child_id)
-        
+                block_height = self._get_block_height(block) + 80  # Add padding
+                max_height = max(max_height, block_height)
+            row_heights[row] = max_height
+
+        # Calculate cumulative Y positions for each row
+        row_y_positions = {}
+        current_y = self.START_Y
+        for row in sorted(row_heights.keys()):
+            row_y_positions[row] = current_y
+            current_y += row_heights[row]
+
+        # Phase 5: Convert to pixel positions
+        positions = {}
+        for block_id in levels:
+            level = levels[block_id]
+            row = rows[block_id]
+
+            x = self.START_X + level * self.HORIZONTAL_SPACING
+            y = row_y_positions[row]
+
+            positions[block_id] = {"x": int(x), "y": int(y)}
+
         if self.debug:
             self._print_debug_info(positions)
-        
+
         return positions
-    
+
     def _print_debug_info(self, positions: Dict[str, dict]):
         """Print debug information about the layout."""
         print("\n" + "="*60)
-        print("BFS LAYOUT DEBUG INFO")
+        print("LAYERED BFS LAYOUT DEBUG INFO")
         print("="*60)
-        
+
         print(f"\nTotal blocks positioned: {len(positions)}")
-        
-        # Position summary
+
         if positions:
             x_coords = [pos["x"] for pos in positions.values()]
             y_coords = [pos["y"] for pos in positions.values()]
             print(f"\nCanvas dimensions:")
             print(f"  X: {min(x_coords)} to {max(x_coords)} ({max(x_coords) - min(x_coords)}px)")
             print(f"  Y: {min(y_coords)} to {max(y_coords)} ({max(y_coords) - min(y_coords)}px)")
-            
-            # Check for collisions
+
+            # Count columns and rows
+            unique_x = len(set(x_coords))
+            unique_y = len(set(y_coords))
+            print(f"  Columns: {unique_x}, Rows: {unique_y}")
+
+            # Check for exact position collisions
+            pos_set = set()
             collision_count = 0
-            block_ids = list(positions.keys())
-            for i, id1 in enumerate(block_ids):
-                for id2 in block_ids[i+1:]:
-                    pos1 = positions[id1]
-                    pos2 = positions[id2]
-                    x_dist = abs(pos1["x"] - pos2["x"])
-                    y_dist = abs(pos1["y"] - pos2["y"])
-                    if x_dist < 200 and y_dist < 200:
-                        collision_count += 1
-            
-            print(f"\nCollision check (<200px): {collision_count} potential overlaps")
-        
+            for block_id, pos in positions.items():
+                pos_tuple = (pos["x"], pos["y"])
+                if pos_tuple in pos_set:
+                    collision_count += 1
+                    print(f"  COLLISION at ({pos['x']}, {pos['y']})")
+                pos_set.add(pos_tuple)
+
+            if collision_count == 0:
+                print(f"\nNo collisions detected!")
+            else:
+                print(f"\nWARNING: {collision_count} collisions detected!")
+
         print("="*60 + "\n")
     
     # Compilation
@@ -393,15 +484,15 @@ class ContactFlowBuilder:
             "ActionMetadata": {},
             "Annotations": []
         }
-        
-        # Calculate positions using BFS layout
-        positions = self._calculate_positions_bfs()
-        
+
+        # Calculate positions using layered BFS algorithm
+        positions = self._calculate_positions()
+
         for block_id, position in positions.items():
             metadata["ActionMetadata"][block_id] = {
                 "position": position
             }
-        
+
         return metadata
     
     def compile(self) -> dict:

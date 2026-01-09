@@ -160,13 +160,13 @@ with open("../src/output/student_loan_ivr.json") as f:
 metadata = data['Metadata']['ActionMetadata']
 positions = [(id, meta['position']) for id, meta in metadata.items()]
 
-# Check overlaps
+# Check overlaps - blocks are ~200x100px, so overlap if within those bounds
 overlaps = []
 for i, (id1, pos1) in enumerate(positions):
     for j, (id2, pos2) in enumerate(positions[i+1:], i+1):
         x_dist = abs(pos1['x'] - pos2['x'])
         y_dist = abs(pos1['y'] - pos2['y'])
-        if x_dist < 200 and y_dist < 200:
+        if x_dist < 200 and y_dist < 100:
             overlaps.append((id1[:8], pos1, id2[:8], pos2, x_dist, y_dist))
 
 if overlaps:
