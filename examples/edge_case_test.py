@@ -80,7 +80,7 @@ def main():
     with open(output_path, 'w') as f:
         json.dump(compiled, f, indent=2)
     
-    print(f"\n✅ Flow manually compiled to: {output_path}")
+    print(f"\nFlow manually compiled to: {output_path}")
     print(f"   Total Actions: {len(compiled['Actions'])}")
     print(f"   Positioned blocks: {len(compiled['Metadata']['ActionMetadata'])}")
     

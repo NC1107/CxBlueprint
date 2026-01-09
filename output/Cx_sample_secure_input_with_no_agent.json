@@ -15,7 +15,7 @@
         },
         "useDynamic": false,
         "ContactFlow": {
-          "id": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/bace5b35-18f0-423a-b358-7dbed1ca76ef",
+          "id": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/5b57acfa-00ef-44ba-ba6f-7227ed683621",
           "text": "Sample inbound flow (first contact experience)"
         }
       },
@@ -83,7 +83,7 @@
       "Identifier": "50b6aab8-40d8-4751-8a14-8f3df571d145",
       "Type": "TransferToFlow",
       "Parameters": {
-        "ContactFlowId": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/bace5b35-18f0-423a-b358-7dbed1ca76ef"
+        "ContactFlowId": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/5b57acfa-00ef-44ba-ba6f-7227ed683621"
       },
       "Transitions": {
         "NextAction": "7670fbff-a8d2-451b-ae8f-546c90e92554",
@@ -174,8 +174,8 @@
       "Type": "GetParticipantInput",
       "Parameters": {
         "Text": "Please enter your credit card number, press the pound key when complete.",
-        "StoreInput": "True",
         "InputTimeLimitSeconds": "6",
+        "StoreInput": "True",
         "InputValidation": {
           "CustomValidation": {
             "MaximumLength": "20"

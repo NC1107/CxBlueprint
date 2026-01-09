@@ -80,9 +80,9 @@
       "Identifier": "9550c919-4d1a-4a29-9f92-76e8a8f930b8",
       "Type": "GetParticipantInput",
       "Parameters": {
-        "StoreInput": "False",
+        "Text": "Press 1 or 2.",
         "InputTimeLimitSeconds": "5",
-        "Text": "Press 1 or 2."
+        "StoreInput": "False"
       },
       "Transitions": {
         "NextAction": "2a95bf5f-c29d-4d01-99df-7f6e448e438d",

@@ -1,6 +1,6 @@
 {
   "Version": "2019-10-30",
-  "StartAction": "9a4c3c2a-e6b6-4a6b-8d63-2da321429aa3",
+  "StartAction": "b22514ef-0a4b-4aba-a8ea-ba61ea934797",
   "Metadata": {
     "entryPointPosition": {
       "x": 0,
@@ -8,34 +8,34 @@
     },
     "snapToGrid": false,
     "ActionMetadata": {
-      "9a4c3c2a-e6b6-4a6b-8d63-2da321429aa3": {
+      "b22514ef-0a4b-4aba-a8ea-ba61ea934797": {
         "position": {
           "x": 150,
           "y": 40
         }
       },
-      "2d58dd66-e9da-4371-9a3e-8b1b13807c8b": {
+      "05cf51c9-c20a-4a0d-8355-28c83ac51e70": {
         "position": {
-          "x": 380,
-          "y": 40
+          "x": 150,
+          "y": 290
         }
       },
-      "894112e0-41b4-4e98-823c-c76317e74560": {
+      "1ac776d0-65b2-4086-a343-d00a9209cadd": {
         "position": {
-          "x": 610,
-          "y": -180
+          "x": 350,
+          "y": 290
         }
       },
-      "31d47b10-73ad-4333-a584-8eb18aa9078a": {
+      "8c9a043d-ac71-489f-bfdb-be3ca50b690a": {
         "position": {
-          "x": 840,
-          "y": -180
+          "x": 150,
+          "y": 540
         }
       },
-      "ecb5ce8c-e4d2-463b-a4ae-b55c7bd28115": {
+      "04096422-63f1-445e-84f3-fe6b17ddb91a": {
         "position": {
-          "x": 610,
-          "y": 20
+          "x": 350,
+          "y": 540
         }
       }
     },
@@ -43,33 +43,33 @@
   },
   "Actions": [
     {
-      "Identifier": "9a4c3c2a-e6b6-4a6b-8d63-2da321429aa3",
+      "Identifier": "b22514ef-0a4b-4aba-a8ea-ba61ea934797",
       "Type": "MessageParticipant",
       "Parameters": {
         "Text": "Thank you for calling"
       },
       "Transitions": {
-        "NextAction": "2d58dd66-e9da-4371-9a3e-8b1b13807c8b",
+        "NextAction": "05cf51c9-c20a-4a0d-8355-28c83ac51e70",
         "Errors": [
           {
-            "NextAction": "31d47b10-73ad-4333-a584-8eb18aa9078a",
+            "NextAction": "1ac776d0-65b2-4086-a343-d00a9209cadd",
             "ErrorType": "NoMatchingError"
           }
         ]
       }
     },
     {
-      "Identifier": "2d58dd66-e9da-4371-9a3e-8b1b13807c8b",
+      "Identifier": "05cf51c9-c20a-4a0d-8355-28c83ac51e70",
       "Type": "GetParticipantInput",
       "Parameters": {
         "Text": "Please press 1 or 2",
-        "StoreInput": "False",
-        "InputTimeLimitSeconds": "8"
+        "InputTimeLimitSeconds": "8",
+        "StoreInput": "False"
       },
       "Transitions": {
         "Conditions": [
           {
-            "NextAction": "894112e0-41b4-4e98-823c-c76317e74560",
+            "NextAction": "8c9a043d-ac71-489f-bfdb-be3ca50b690a",
             "Condition": {
               "Operator": "Equals",
               "Operands": [
@@ -78,7 +78,7 @@
             }
           },
           {
-            "NextAction": "ecb5ce8c-e4d2-463b-a4ae-b55c7bd28115",
+            "NextAction": "04096422-63f1-445e-84f3-fe6b17ddb91a",
             "Condition": {
               "Operator": "Equals",
               "Operands": [
@@ -87,57 +87,57 @@
             }
           }
         ],
-        "NextAction": "31d47b10-73ad-4333-a584-8eb18aa9078a",
+        "NextAction": "1ac776d0-65b2-4086-a343-d00a9209cadd",
         "Errors": [
           {
-            "NextAction": "31d47b10-73ad-4333-a584-8eb18aa9078a",
+            "NextAction": "1ac776d0-65b2-4086-a343-d00a9209cadd",
             "ErrorType": "InputTimeLimitExceeded"
           },
           {
-            "NextAction": "31d47b10-73ad-4333-a584-8eb18aa9078a",
+            "NextAction": "1ac776d0-65b2-4086-a343-d00a9209cadd",
             "ErrorType": "NoMatchingCondition"
           },
           {
-            "NextAction": "31d47b10-73ad-4333-a584-8eb18aa9078a",
+            "NextAction": "1ac776d0-65b2-4086-a343-d00a9209cadd",
             "ErrorType": "NoMatchingError"
           }
         ]
       }
     },
     {
-      "Identifier": "894112e0-41b4-4e98-823c-c76317e74560",
+      "Identifier": "8c9a043d-ac71-489f-bfdb-be3ca50b690a",
       "Type": "MessageParticipant",
       "Parameters": {
         "Text": "Oranges"
       },
       "Transitions": {
-        "NextAction": "31d47b10-73ad-4333-a584-8eb18aa9078a",
+        "NextAction": "1ac776d0-65b2-4086-a343-d00a9209cadd",
         "Errors": [
           {
-            "NextAction": "31d47b10-73ad-4333-a584-8eb18aa9078a",
+            "NextAction": "1ac776d0-65b2-4086-a343-d00a9209cadd",
             "ErrorType": "NoMatchingError"
           }
         ]
       }
     },
     {
-      "Identifier": "ecb5ce8c-e4d2-463b-a4ae-b55c7bd28115",
+      "Identifier": "04096422-63f1-445e-84f3-fe6b17ddb91a",
       "Type": "MessageParticipant",
       "Parameters": {
         "Text": "Apples"
       },
       "Transitions": {
-        "NextAction": "31d47b10-73ad-4333-a584-8eb18aa9078a",
+        "NextAction": "1ac776d0-65b2-4086-a343-d00a9209cadd",
         "Errors": [
           {
-            "NextAction": "31d47b10-73ad-4333-a584-8eb18aa9078a",
+            "NextAction": "1ac776d0-65b2-4086-a343-d00a9209cadd",
             "ErrorType": "NoMatchingError"
           }
         ]
       }
     },
     {
-      "Identifier": "31d47b10-73ad-4333-a584-8eb18aa9078a",
+      "Identifier": "1ac776d0-65b2-4086-a343-d00a9209cadd",
       "Type": "DisconnectParticipant",
       "Parameters": {},
       "Transitions": {}

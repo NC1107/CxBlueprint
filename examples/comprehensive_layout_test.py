@@ -127,9 +127,9 @@ for i, (id1, pos1) in enumerate(positions):
             overlaps.append((id1[:8], pos1, id2[:8], pos2, x_dist, y_dist))
 
 if overlaps:
-    print(f'\n⚠️  Found {len(overlaps)} potential overlaps')
+    print(f'\nFound {len(overlaps)} potential overlaps')
 else:
-    print('\n✅ No overlaps detected! Perfect spacing.')
+    print('\nNo overlaps detected! Perfect spacing.')
 
 # Calculate canvas bounds
 x_coords = [pos["x"] for _, pos in positions]

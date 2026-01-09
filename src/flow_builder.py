@@ -3,14 +3,27 @@ Contact Flow Builder - Programmatic flow generation
 """
 from pathlib import Path
 import json
-from typing import List, Optional, Dict, Set, Tuple
+from typing import List, Optional, Dict, Set, Tuple, TypeVar
 from collections import deque
 import uuid
 from blocks.base import FlowBlock
-from blocks.message_participant import MessageParticipant
-from blocks.disconnect_participant import DisconnectParticipant
-from blocks.get_participant_input import GetParticipantInput
-from blocks.transfer_to_flow import TransferToFlow
+from blocks.participant_actions import (
+    MessageParticipant,
+    DisconnectParticipant,
+    GetParticipantInput,
+    ConnectParticipantWithLexBot,
+    ShowView,
+)
+from blocks.flow_control_actions import (
+    TransferToFlow,
+    CheckHoursOfOperation,
+    EndFlowExecution,
+)
+from blocks.interactions import InvokeLambdaFunction
+from blocks.contact_actions import UpdateContactAttributes
+from blocks.types import LexV2Bot, LexBot, ViewResource, Media
+
+T = TypeVar('T', bound=FlowBlock) # Generic FlowBlock type for method returns
 
 
 class ContactFlowBuilder:
@@ -31,7 +44,7 @@ class ContactFlowBuilder:
         self._start_action: Optional[str] = None
         self.debug = debug
     
-    def _register_block(self, block: FlowBlock) -> FlowBlock:
+    def _register_block(self, block: T) -> T:
         """Register a block with the flow."""
         self.blocks.append(block)
         
@@ -74,9 +87,116 @@ class ContactFlowBuilder:
         )
         return self._register_block(block)
     
-    # ============================================================
-    # BFS-BASED LAYOUT ALGORITHM
-    # ============================================================
+    # Generic block registration
+    
+    def add(self, block: T) -> T:
+        """Add a pre-configured block to the flow.
+        
+        Use this for specialized blocks that aren't covered by convenience methods.
+        The block must already have an identifier set.
+        
+        Example:
+            from blocks.participant_actions import ConnectParticipantWithLexBot
+            from blocks.types import LexV2Bot
+            
+            lex = ConnectParticipantWithLexBot(
+                identifier=str(uuid.uuid4()),
+                text="How can I help you?",
+                lex_v2_bot=LexV2Bot(alias_arn="arn:aws:lex:...")
+            )
+            flow.add(lex)
+        """
+        return self._register_block(block)
+    
+    # Convenience methods for common complex blocks
+    
+    def lex_bot(self, text: str = None, lex_v2_bot: LexV2Bot = None, 
+                lex_bot: LexBot = None, **kwargs) -> ConnectParticipantWithLexBot:
+        """Create a Lex bot interaction block.
+        
+        Args:
+            text: Prompt text to play before bot interaction
+            lex_v2_bot: Lex V2 bot configuration (recommended)
+            lex_bot: Legacy Lex bot configuration
+            **kwargs: Additional parameters (lex_session_attributes, etc.)
+        """
+        block = ConnectParticipantWithLexBot(
+            identifier=str(uuid.uuid4()),
+            text=text,
+            lex_v2_bot=lex_v2_bot,
+            lex_bot=lex_bot,
+            **kwargs
+        )
+        return self._register_block(block)
+    
+    def invoke_lambda(self, function_arn: str, timeout_seconds: str = "8", **kwargs) -> InvokeLambdaFunction:
+        """Create a Lambda function invocation block.
+        
+        Args:
+            function_arn: ARN of the Lambda function (or template like {{LAMBDA_ARN}})
+            timeout_seconds: Function timeout (default: 8)
+            **kwargs: Additional parameters
+        """
+        block = InvokeLambdaFunction(
+            identifier=str(uuid.uuid4()),
+            lambda_function_arn=function_arn,
+            invocation_time_limit_seconds=timeout_seconds,
+            **kwargs
+        )
+        return self._register_block(block)
+    
+    def check_hours(self, hours_of_operation_id: str = None, **kwargs) -> CheckHoursOfOperation:
+        """Create a business hours check block.
+        
+        Args:
+            hours_of_operation_id: Hours of operation ID (or template)
+            **kwargs: Additional parameters
+        """
+        params = {}
+        if hours_of_operation_id:
+            params["HoursOfOperationId"] = hours_of_operation_id
+        params.update(kwargs)
+        
+        block = CheckHoursOfOperation(
+            identifier=str(uuid.uuid4()),
+            parameters=params
+        )
+        return self._register_block(block)
+    
+    def update_attributes(self, **attributes) -> UpdateContactAttributes:
+        """Create a contact attributes update block.
+        
+        Args:
+            **attributes: Attributes to update (passed as parameters)
+        """
+        block = UpdateContactAttributes(
+            identifier=str(uuid.uuid4()),
+            parameters=attributes
+        )
+        return self._register_block(block)
+    
+    def show_view(self, view_resource: ViewResource, **kwargs) -> ShowView:
+        """Create an agent workspace view block.
+        
+        Args:
+            view_resource: View resource configuration
+            **kwargs: Additional parameters (view_data, etc.)
+        """
+        block = ShowView(
+            identifier=str(uuid.uuid4()),
+            view_resource=view_resource,
+            **kwargs
+        )
+        return self._register_block(block)
+    
+    def end_flow(self) -> EndFlowExecution:
+        """Create an end flow execution block."""
+        block = EndFlowExecution(
+            identifier=str(uuid.uuid4())
+        )
+        return self._register_block(block)
+    
+    # BFS-based layout algorithm
     
     def _get_block(self, block_id: str) -> Optional[FlowBlock]:
         """Get block by ID."""
@@ -222,9 +342,7 @@ class ContactFlowBuilder:
         
         print("="*60 + "\n")
     
-    # ============================================================
-    # COMPILATION
-    # ============================================================
+    # Compilation
     
     def _build_metadata(self) -> dict:
         """Build metadata including block positions."""

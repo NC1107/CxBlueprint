@@ -3,182 +3,198 @@
   "StartAction": "1300053c-a75c-462a-9ece-46b0f5c8084a",
   "Metadata": {
     "entryPointPosition": {
-      "x": 14.4,
-      "y": 233.6
+      "x": 15,
+      "y": 234
     },
+    "snapToGrid": false,
+    "name": "Sample AB test",
+    "description": "Distributes traffic for A/B tests",
+    "type": "contactFlow",
+    "status": "published",
+    "hash": "e4d6be4b717a5729d3b58204eaef184ccd69f3ebc9134f68459564668273cf64",
     "ActionMetadata": {
+      "98ee6606-e817-47ca-8852-79838f4f156a": {
+        "position": {
+          "x": 919,
+          "y": 409
+        }
+      },
+      "10c99b30-cf7b-48af-95e9-3b5ec88e69dd": {
+        "position": {
+          "x": 912,
+          "y": 603
+        }
+      },
+      "548830a1-0e3e-4bbf-be3a-b7595665233f": {
+        "position": {
+          "x": 916,
+          "y": 800
+        }
+      },
+      "20ce10cc-3da5-4382-8dab-955cb9b9c18a": {
+        "position": {
+          "x": 919,
+          "y": 1816
+        }
+      },
+      "0813f615-37a7-489d-b231-8a704b3b626c": {
+        "position": {
+          "x": 917,
+          "y": 2024
+        }
+      },
+      "31205365-8e53-4230-9e7d-62a707df30c0": {
+        "position": {
+          "x": 924,
+          "y": 1199
+        }
+      },
+      "e9721541-41f4-4cbc-bd41-bf249eb2ecef": {
+        "position": {
+          "x": 921,
+          "y": 1398
+        }
+      },
+      "c6733680-b6cc-4fef-9f10-f16370a147ab": {
+        "position": {
+          "x": 922,
+          "y": 1606
+        }
+      },
+      "a4b2a1ea-311c-4896-96e6-675a951f4234": {
+        "position": {
+          "x": 923,
+          "y": 1002
+        }
+      },
+      "6bd7e1a8-6a8b-4adb-afcb-a52c7ea45520": {
+        "position": {
+          "x": 918,
+          "y": 212
+        }
+      },
+      "bdc8e490-d2e1-4e45-9c5f-34612f60a846": {
+        "position": {
+          "x": 1890,
+          "y": 1137
+        }
+      },
+      "be80759a-bfdb-4332-bbac-63ddd9ad4dea": {
+        "position": {
+          "x": 1581,
+          "y": 1240
+        },
+        "useDynamic": false,
+        "ContactFlow": {
+          "id": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/5b57acfa-00ef-44ba-ba6f-7227ed683621",
+          "text": "Sample inbound flow (first contact experience)"
+        }
+      },
+      "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77": {
+        "position": {
+          "x": 1282,
+          "y": 1354
+        },
+        "useDynamic": false
+      },
+      "734f8208-42be-4d73-a7f6-b754b93b064d": {
+        "position": {
+          "x": 913,
+          "y": 15
+        }
+      },
       "034ceb17-23e9-4675-a437-41a89c1568e8": {
         "position": {
-          "x": 656.8,
+          "x": 657,
           "y": 52
-        }
+        },
+        "useDynamic": false
       },
       "c9c6df6c-1fb4-459b-b84d-28f92d0c1422": {
         "position": {
-          "x": 670.4,
-          "y": 244.8
-        }
+          "x": 671,
+          "y": 245
+        },
+        "useDynamic": false
       },
       "6676b92a-7e0b-47a5-b55c-56d31e465218": {
         "position": {
-          "x": 685.6,
+          "x": 686,
           "y": 424
-        }
+        },
+        "useDynamic": false
       },
       "1187f441-b61e-420e-a554-6799893e3e50": {
         "position": {
-          "x": 690.4,
-          "y": 620.8
-        }
+          "x": 691,
+          "y": 621
+        },
+        "useDynamic": false
       },
       "aaffb149-bd95-4a2f-92ed-12bab147442f": {
         "position": {
-          "x": 693.6,
-          "y": 800.8
-        }
+          "x": 694,
+          "y": 801
+        },
+        "useDynamic": false
       },
       "42520dfc-a90d-40b3-a1c6-92bc62250e24": {
         "position": {
           "x": 680,
           "y": 980
-        }
+        },
+        "useDynamic": false
       },
       "89660d4b-56fe-4ec5-8038-97c910dff3be": {
         "position": {
-          "x": 678.4,
-          "y": 1578.4
-        }
+          "x": 679,
+          "y": 1579
+        },
+        "useDynamic": false
       },
       "1892aca2-3226-4249-aafa-fe68b8b1c2de": {
         "position": {
           "x": 680,
-          "y": 1384.8
-        }
+          "y": 1385
+        },
+        "useDynamic": false
       },
       "cc35093a-2118-4d5e-a689-2c26be2aee76": {
         "position": {
-          "x": 680.8,
-          "y": 1146.4
-        }
+          "x": 681,
+          "y": 1147
+        },
+        "useDynamic": false
       },
       "b20bf80e-ea4c-4914-b4e5-f0865c0aaab8": {
         "position": {
-          "x": 593.6,
+          "x": 594,
           "y": 2004
-        }
+        },
+        "useDynamic": false
       },
       "5924eb92-9d3b-4d0c-b5a6-76b589779c97": {
         "position": {
-          "x": 662.4,
-          "y": 1754.4
-        }
+          "x": 663,
+          "y": 1755
+        },
+        "useDynamic": false
       },
       "1300053c-a75c-462a-9ece-46b0f5c8084a": {
         "position": {
           "x": 148,
-          "y": 274.4
-        }
+          "y": 275
+        },
+        "useDynamic": false
       },
       "80329f54-d64f-4510-8eee-a935e4ae0e2c": {
         "position": {
-          "x": 380.8,
-          "y": 445.6
+          "x": 381,
+          "y": 446
         },
-        "conditions": [
-          {
-            "Condition": {
-              "Operands": [
-                {
-                  "displayName": "2"
-                }
-              ]
-            }
-          },
-          {
-            "Condition": {
-              "Operands": [
-                {
-                  "displayName": "3"
-                }
-              ]
-            }
-          },
-          {
-            "Condition": {
-              "Operands": [
-                {
-                  "displayName": "4"
-                }
-              ]
-            }
-          },
-          {
-            "Condition": {
-              "Operands": [
-                {
-                  "displayName": "5"
-                }
-              ]
-            }
-          },
-          {
-            "Condition": {
-              "Operands": [
-                {
-                  "displayName": "6"
-                }
-              ]
-            }
-          },
-          {
-            "Condition": {
-              "Operands": [
-                {
-                  "displayName": "7"
-                }
-              ]
-            }
-          },
-          {
-            "Condition": {
-              "Operands": [
-                {
-                  "displayName": "8"
-                }
-              ]
-            }
-          },
-          {
-            "Condition": {
-              "Operands": [
-                {
-                  "displayName": "9"
-                }
-              ]
-            }
-          },
-          {
-            "Condition": {
-              "Operands": [
-                {
-                  "displayName": "10"
-                }
-              ]
-            }
-          },
-          {
-            "Condition": {
-              "Operands": [
-                {
-                  "displayName": "11"
-                }
-              ]
-            }
-          }
-        ],
         "conditionMetadata": [
           {
-            "id": "8b035731-0032-46f3-b363-402c8277f67d",
+            "id": "78ea249d-5a1e-4d0f-916f-29b884761fa9",
             "percent": {
               "value": 1,
               "display": "1%"
@@ -187,7 +203,7 @@
             "value": "3"
           },
           {
-            "id": "3bab4792-fdf3-48f6-b05a-c9d5c50bab9f",
+            "id": "31f2166a-e6aa-4025-af5b-f35d1c98632d",
             "percent": {
               "value": 1,
               "display": "1%"
@@ -196,7 +212,7 @@
             "value": "6"
           },
           {
-            "id": "86dae964-b24a-4e58-977a-9570f349091f",
+            "id": "bfa00daa-a724-43eb-a366-92b6e009addf",
             "percent": {
               "value": 1,
               "display": "1%"
@@ -205,7 +221,7 @@
             "value": "8"
           },
           {
-            "id": "807225e0-1a03-4a18-9703-a68ba66b453c",
+            "id": "a7767f8b-91d7-4eaa-a3fb-6939573585a1",
             "percent": {
               "value": 1,
               "display": "1%"
@@ -214,7 +230,7 @@
             "value": "11"
           },
           {
-            "id": "0f6c7d52-52b1-445c-bee4-f0987f7bd9bb",
+            "id": "baf06d56-ae3f-461f-9b27-ba99701f274c",
             "percent": {
               "value": 1,
               "display": "1%"
@@ -223,7 +239,7 @@
             "value": "14"
           },
           {
-            "id": "c37b82ca-1e13-44f7-99bd-7bfa0fc884d0",
+            "id": "d650b9ee-d8af-4f09-9f4f-ebbba82dbf61",
             "percent": {
               "value": 1,
               "display": "1%"
@@ -232,7 +248,7 @@
             "value": "17"
           },
           {
-            "id": "7a3d3dfb-ce59-4ad4-886a-de4b1c0a1e0b",
+            "id": "6aaeaa8b-079a-482a-973c-27eaab3a4997",
             "percent": {
               "value": 1,
               "display": "1%"
@@ -241,7 +257,7 @@
             "value": "14"
           },
           {
-            "id": "00a7f5e1-d083-452d-8ecc-3355f9d15751",
+            "id": "41a38cea-be38-4807-8f6c-5b4a89d1da47",
             "percent": {
               "value": 1,
               "display": "1%"
@@ -250,7 +266,7 @@
             "value": "11"
           },
           {
-            "id": "6d59a5bb-5393-45f3-ad39-e5b6f3adf382",
+            "id": "584d698e-06ce-43aa-87a4-ea99facfb12b",
             "percent": {
               "value": 1,
               "display": "1%"
@@ -259,7 +275,7 @@
             "value": "8"
           },
           {
-            "id": "bc594204-35e6-4d92-98dc-5250aaf29889",
+            "id": "3b34101c-a5ff-460e-8e77-fa210f591e8f",
             "percent": {
               "value": 1,
               "display": "1%"
@@ -268,226 +284,408 @@
             "value": "5"
           }
         ]
-      },
-      "bdc8e490-d2e1-4e45-9c5f-34612f60a846": {
-        "position": {
-          "x": 1889.6,
-          "y": 1136.8
-        }
-      },
-      "98ee6606-e817-47ca-8852-79838f4f156a": {
-        "position": {
-          "x": 918.4,
-          "y": 408.8
-        },
-        "dynamicParams": []
-      },
-      "10c99b30-cf7b-48af-95e9-3b5ec88e69dd": {
-        "position": {
-          "x": 912,
-          "y": 602.4
-        },
-        "dynamicParams": []
-      },
-      "548830a1-0e3e-4bbf-be3a-b7595665233f": {
-        "position": {
-          "x": 916,
-          "y": 800
-        },
-        "dynamicParams": []
-      },
-      "20ce10cc-3da5-4382-8dab-955cb9b9c18a": {
-        "position": {
-          "x": 918.4,
-          "y": 1816
-        },
-        "dynamicParams": []
-      },
-      "0813f615-37a7-489d-b231-8a704b3b626c": {
-        "position": {
-          "x": 916.8,
-          "y": 2024
-        },
-        "dynamicParams": []
-      },
-      "31205365-8e53-4230-9e7d-62a707df30c0": {
-        "position": {
-          "x": 924,
-          "y": 1198.4
-        },
-        "dynamicParams": []
-      },
-      "e9721541-41f4-4cbc-bd41-bf249eb2ecef": {
-        "position": {
-          "x": 920.8,
-          "y": 1397.6
-        },
-        "dynamicParams": []
-      },
-      "c6733680-b6cc-4fef-9f10-f16370a147ab": {
-        "position": {
-          "x": 921.6,
-          "y": 1605.6
-        },
-        "dynamicParams": []
-      },
-      "a4b2a1ea-311c-4896-96e6-675a951f4234": {
-        "position": {
-          "x": 922.4,
-          "y": 1001.6
-        },
-        "dynamicParams": []
-      },
-      "6bd7e1a8-6a8b-4adb-afcb-a52c7ea45520": {
-        "position": {
-          "x": 917.6,
-          "y": 212
-        },
-        "dynamicParams": []
-      },
-      "734f8208-42be-4d73-a7f6-b754b93b064d": {
-        "position": {
-          "x": 912.8,
-          "y": 14.4
-        },
-        "dynamicParams": []
-      },
-      "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77": {
-        "position": {
-          "x": 1281.6,
-          "y": 1353.6
-        }
       }
-    },
-    "Annotations": []
+    }
   },
   "Actions": [
     {
+      "Identifier": "98ee6606-e817-47ca-8852-79838f4f156a",
+      "Parameters": {
+        "Attributes": {
+          "Distribute by percentage": "8%"
+        }
+      },
+      "Transitions": {
+        "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
+        "Errors": [
+          {
+            "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
+            "ErrorType": "NoMatchingError"
+          }
+        ],
+        "Conditions": []
+      },
+      "Type": "UpdateContactAttributes"
+    },
+    {
+      "Identifier": "10c99b30-cf7b-48af-95e9-3b5ec88e69dd",
+      "Parameters": {
+        "Attributes": {
+          "Distribute by percentage": "11%"
+        }
+      },
+      "Transitions": {
+        "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
+        "Errors": [
+          {
+            "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
+            "ErrorType": "NoMatchingError"
+          }
+        ],
+        "Conditions": []
+      },
+      "Type": "UpdateContactAttributes"
+    },
+    {
+      "Identifier": "548830a1-0e3e-4bbf-be3a-b7595665233f",
+      "Parameters": {
+        "Attributes": {
+          "Distribute by percentage": "14%"
+        }
+      },
+      "Transitions": {
+        "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
+        "Errors": [
+          {
+            "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
+            "ErrorType": "NoMatchingError"
+          }
+        ],
+        "Conditions": []
+      },
+      "Type": "UpdateContactAttributes"
+    },
+    {
+      "Identifier": "20ce10cc-3da5-4382-8dab-955cb9b9c18a",
+      "Parameters": {
+        "Attributes": {
+          "Distribute by percentage": "3%"
+        }
+      },
+      "Transitions": {
+        "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
+        "Errors": [
+          {
+            "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
+            "ErrorType": "NoMatchingError"
+          }
+        ],
+        "Conditions": []
+      },
+      "Type": "UpdateContactAttributes"
+    },
+    {
+      "Identifier": "0813f615-37a7-489d-b231-8a704b3b626c",
+      "Parameters": {
+        "Attributes": {
+          "Distribute by percentage": "5%"
+        }
+      },
+      "Transitions": {
+        "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
+        "Errors": [
+          {
+            "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
+            "ErrorType": "NoMatchingError"
+          }
+        ],
+        "Conditions": []
+      },
+      "Type": "UpdateContactAttributes"
+    },
+    {
+      "Identifier": "31205365-8e53-4230-9e7d-62a707df30c0",
+      "Parameters": {
+        "Attributes": {
+          "Distribute by percentage": "8%"
+        }
+      },
+      "Transitions": {
+        "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
+        "Errors": [
+          {
+            "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
+            "ErrorType": "NoMatchingError"
+          }
+        ],
+        "Conditions": []
+      },
+      "Type": "UpdateContactAttributes"
+    },
+    {
+      "Identifier": "e9721541-41f4-4cbc-bd41-bf249eb2ecef",
+      "Parameters": {
+        "Attributes": {
+          "Distribute by percentage": "11%"
+        }
+      },
+      "Transitions": {
+        "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
+        "Errors": [
+          {
+            "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
+            "ErrorType": "NoMatchingError"
+          }
+        ],
+        "Conditions": []
+      },
+      "Type": "UpdateContactAttributes"
+    },
+    {
+      "Identifier": "c6733680-b6cc-4fef-9f10-f16370a147ab",
+      "Parameters": {
+        "Attributes": {
+          "Distribute by percentage": "14%"
+        }
+      },
+      "Transitions": {
+        "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
+        "Errors": [
+          {
+            "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
+            "ErrorType": "NoMatchingError"
+          }
+        ],
+        "Conditions": []
+      },
+      "Type": "UpdateContactAttributes"
+    },
+    {
+      "Identifier": "a4b2a1ea-311c-4896-96e6-675a951f4234",
+      "Parameters": {
+        "Attributes": {
+          "Distribute by percentage": "17%"
+        }
+      },
+      "Transitions": {
+        "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
+        "Errors": [
+          {
+            "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
+            "ErrorType": "NoMatchingError"
+          }
+        ],
+        "Conditions": []
+      },
+      "Type": "UpdateContactAttributes"
+    },
+    {
+      "Identifier": "6bd7e1a8-6a8b-4adb-afcb-a52c7ea45520",
+      "Parameters": {
+        "Attributes": {
+          "Distribute by percentage": "6%"
+        }
+      },
+      "Transitions": {
+        "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
+        "Errors": [
+          {
+            "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
+            "ErrorType": "NoMatchingError"
+          }
+        ],
+        "Conditions": []
+      },
+      "Type": "UpdateContactAttributes"
+    },
+    {
+      "Identifier": "bdc8e490-d2e1-4e45-9c5f-34612f60a846",
+      "Type": "DisconnectParticipant",
+      "Parameters": {},
+      "Transitions": {}
+    },
+    {
+      "Identifier": "be80759a-bfdb-4332-bbac-63ddd9ad4dea",
+      "Parameters": {
+        "ContactFlowId": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/5b57acfa-00ef-44ba-ba6f-7227ed683621"
+      },
+      "Transitions": {
+        "NextAction": "bdc8e490-d2e1-4e45-9c5f-34612f60a846",
+        "Errors": [
+          {
+            "NextAction": "bdc8e490-d2e1-4e45-9c5f-34612f60a846",
+            "ErrorType": "NoMatchingError"
+          }
+        ],
+        "Conditions": []
+      },
+      "Type": "TransferToFlow"
+    },
+    {
+      "Identifier": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
+      "Parameters": {
+        "Text": "Now transferring back to the main menu."
+      },
+      "Transitions": {
+        "NextAction": "be80759a-bfdb-4332-bbac-63ddd9ad4dea",
+        "Errors": [],
+        "Conditions": []
+      },
+      "Type": "MessageParticipant"
+    },
+    {
+      "Identifier": "734f8208-42be-4d73-a7f6-b754b93b064d",
+      "Parameters": {
+        "Attributes": {
+          "Distribute by percentage": "3%"
+        }
+      },
+      "Transitions": {
+        "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
+        "Errors": [
+          {
+            "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
+            "ErrorType": "NoMatchingError"
+          }
+        ],
+        "Conditions": []
+      },
+      "Type": "UpdateContactAttributes"
+    },
+    {
+      "Identifier": "034ceb17-23e9-4675-a437-41a89c1568e8",
       "Parameters": {
         "Text": "You rolled a 2!"
       },
-      "Identifier": "034ceb17-23e9-4675-a437-41a89c1568e8",
-      "Type": "MessageParticipant",
       "Transitions": {
-        "NextAction": "734f8208-42be-4d73-a7f6-b754b93b064d"
-      }
+        "NextAction": "734f8208-42be-4d73-a7f6-b754b93b064d",
+        "Errors": [],
+        "Conditions": []
+      },
+      "Type": "MessageParticipant"
     },
     {
+      "Identifier": "c9c6df6c-1fb4-459b-b84d-28f92d0c1422",
       "Parameters": {
         "Text": "You rolled a 3!"
       },
-      "Identifier": "c9c6df6c-1fb4-459b-b84d-28f92d0c1422",
-      "Type": "MessageParticipant",
       "Transitions": {
-        "NextAction": "6bd7e1a8-6a8b-4adb-afcb-a52c7ea45520"
-      }
+        "NextAction": "6bd7e1a8-6a8b-4adb-afcb-a52c7ea45520",
+        "Errors": [],
+        "Conditions": []
+      },
+      "Type": "MessageParticipant"
     },
     {
+      "Identifier": "6676b92a-7e0b-47a5-b55c-56d31e465218",
       "Parameters": {
         "Text": "You rolled a 4!"
       },
-      "Identifier": "6676b92a-7e0b-47a5-b55c-56d31e465218",
-      "Type": "MessageParticipant",
       "Transitions": {
-        "NextAction": "98ee6606-e817-47ca-8852-79838f4f156a"
-      }
+        "NextAction": "98ee6606-e817-47ca-8852-79838f4f156a",
+        "Errors": [],
+        "Conditions": []
+      },
+      "Type": "MessageParticipant"
     },
     {
+      "Identifier": "1187f441-b61e-420e-a554-6799893e3e50",
       "Parameters": {
         "Text": "You rolled a 5!"
       },
-      "Identifier": "1187f441-b61e-420e-a554-6799893e3e50",
-      "Type": "MessageParticipant",
       "Transitions": {
-        "NextAction": "10c99b30-cf7b-48af-95e9-3b5ec88e69dd"
-      }
+        "NextAction": "10c99b30-cf7b-48af-95e9-3b5ec88e69dd",
+        "Errors": [],
+        "Conditions": []
+      },
+      "Type": "MessageParticipant"
     },
     {
+      "Identifier": "aaffb149-bd95-4a2f-92ed-12bab147442f",
       "Parameters": {
         "Text": "You rolled a 6!"
       },
-      "Identifier": "aaffb149-bd95-4a2f-92ed-12bab147442f",
-      "Type": "MessageParticipant",
       "Transitions": {
-        "NextAction": "548830a1-0e3e-4bbf-be3a-b7595665233f"
-      }
+        "NextAction": "548830a1-0e3e-4bbf-be3a-b7595665233f",
+        "Errors": [],
+        "Conditions": []
+      },
+      "Type": "MessageParticipant"
     },
     {
+      "Identifier": "42520dfc-a90d-40b3-a1c6-92bc62250e24",
       "Parameters": {
         "Text": "You rolled a 7!"
       },
-      "Identifier": "42520dfc-a90d-40b3-a1c6-92bc62250e24",
-      "Type": "MessageParticipant",
       "Transitions": {
-        "NextAction": "a4b2a1ea-311c-4896-96e6-675a951f4234"
-      }
+        "NextAction": "a4b2a1ea-311c-4896-96e6-675a951f4234",
+        "Errors": [],
+        "Conditions": []
+      },
+      "Type": "MessageParticipant"
     },
     {
+      "Identifier": "89660d4b-56fe-4ec5-8038-97c910dff3be",
       "Parameters": {
         "Text": "You rolled a 8!"
       },
-      "Identifier": "89660d4b-56fe-4ec5-8038-97c910dff3be",
-      "Type": "MessageParticipant",
       "Transitions": {
-        "NextAction": "c6733680-b6cc-4fef-9f10-f16370a147ab"
-      }
+        "NextAction": "c6733680-b6cc-4fef-9f10-f16370a147ab",
+        "Errors": [],
+        "Conditions": []
+      },
+      "Type": "MessageParticipant"
     },
     {
+      "Identifier": "1892aca2-3226-4249-aafa-fe68b8b1c2de",
       "Parameters": {
         "Text": "You rolled a 9!"
       },
-      "Identifier": "1892aca2-3226-4249-aafa-fe68b8b1c2de",
-      "Type": "MessageParticipant",
       "Transitions": {
-        "NextAction": "e9721541-41f4-4cbc-bd41-bf249eb2ecef"
-      }
+        "NextAction": "e9721541-41f4-4cbc-bd41-bf249eb2ecef",
+        "Errors": [],
+        "Conditions": []
+      },
+      "Type": "MessageParticipant"
     },
     {
+      "Identifier": "cc35093a-2118-4d5e-a689-2c26be2aee76",
       "Parameters": {
         "Text": "You rolled a 10!"
       },
-      "Identifier": "cc35093a-2118-4d5e-a689-2c26be2aee76",
-      "Type": "MessageParticipant",
       "Transitions": {
-        "NextAction": "31205365-8e53-4230-9e7d-62a707df30c0"
-      }
+        "NextAction": "31205365-8e53-4230-9e7d-62a707df30c0",
+        "Errors": [],
+        "Conditions": []
+      },
+      "Type": "MessageParticipant"
     },
     {
+      "Identifier": "b20bf80e-ea4c-4914-b4e5-f0865c0aaab8",
       "Parameters": {
         "Text": "You rolled a 11!"
       },
-      "Identifier": "b20bf80e-ea4c-4914-b4e5-f0865c0aaab8",
-      "Type": "MessageParticipant",
       "Transitions": {
-        "NextAction": "0813f615-37a7-489d-b231-8a704b3b626c"
-      }
+        "NextAction": "0813f615-37a7-489d-b231-8a704b3b626c",
+        "Errors": [],
+        "Conditions": []
+      },
+      "Type": "MessageParticipant"
     },
     {
+      "Identifier": "5924eb92-9d3b-4d0c-b5a6-76b589779c97",
       "Parameters": {
         "Text": "You rolled a 12!"
       },
-      "Identifier": "5924eb92-9d3b-4d0c-b5a6-76b589779c97",
-      "Type": "MessageParticipant",
       "Transitions": {
-        "NextAction": "20ce10cc-3da5-4382-8dab-955cb9b9c18a"
-      }
+        "NextAction": "20ce10cc-3da5-4382-8dab-955cb9b9c18a",
+        "Errors": [],
+        "Conditions": []
+      },
+      "Type": "MessageParticipant"
     },
     {
+      "Identifier": "1300053c-a75c-462a-9ece-46b0f5c8084a",
       "Parameters": {
         "Text": "Amazon Connect will now simulate rolling dice by using the Distribute randomly block,,,now rolling,,,,,,,"
       },
-      "Identifier": "1300053c-a75c-462a-9ece-46b0f5c8084a",
-      "Type": "MessageParticipant",
       "Transitions": {
-        "NextAction": "80329f54-d64f-4510-8eee-a935e4ae0e2c"
-      }
+        "NextAction": "80329f54-d64f-4510-8eee-a935e4ae0e2c",
+        "Errors": [],
+        "Conditions": []
+      },
+      "Type": "MessageParticipant"
     },
     {
-      "Parameters": {},
       "Identifier": "80329f54-d64f-4510-8eee-a935e4ae0e2c",
-      "Type": "DistributeByPercentage",
       "Transitions": {
         "NextAction": "5924eb92-9d3b-4d0c-b5a6-76b589779c97",
+        "Errors": [
+          {
+            "NextAction": "5924eb92-9d3b-4d0c-b5a6-76b589779c97",
+            "ErrorType": "NoMatchingCondition"
+          }
+        ],
         "Conditions": [
           {
             "NextAction": "034ceb17-23e9-4675-a437-41a89c1568e8",
@@ -579,239 +777,9 @@
               ]
             }
           }
-        ],
-        "Errors": [
-          {
-            "NextAction": "5924eb92-9d3b-4d0c-b5a6-76b589779c97",
-            "ErrorType": "NoMatchingCondition"
-          }
         ]
-      }
-    },
-    {
-      "Parameters": {},
-      "Identifier": "bdc8e490-d2e1-4e45-9c5f-34612f60a846",
-      "Type": "DisconnectParticipant",
-      "Transitions": {}
-    },
-    {
-      "Parameters": {
-        "Attributes": {
-          "Distribute by percentage": "8%"
-        },
-        "TargetContact": "Current"
       },
-      "Identifier": "98ee6606-e817-47ca-8852-79838f4f156a",
-      "Type": "UpdateContactAttributes",
-      "Transitions": {
-        "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
-        "Errors": [
-          {
-            "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
-            "ErrorType": "NoMatchingError"
-          }
-        ]
-      }
-    },
-    {
-      "Parameters": {
-        "Attributes": {
-          "Distribute by percentage": "11%"
-        },
-        "TargetContact": "Current"
-      },
-      "Identifier": "10c99b30-cf7b-48af-95e9-3b5ec88e69dd",
-      "Type": "UpdateContactAttributes",
-      "Transitions": {
-        "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
-        "Errors": [
-          {
-            "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
-            "ErrorType": "NoMatchingError"
-          }
-        ]
-      }
-    },
-    {
-      "Parameters": {
-        "Attributes": {
-          "Distribute by percentage": "14%"
-        },
-        "TargetContact": "Current"
-      },
-      "Identifier": "548830a1-0e3e-4bbf-be3a-b7595665233f",
-      "Type": "UpdateContactAttributes",
-      "Transitions": {
-        "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
-        "Errors": [
-          {
-            "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
-            "ErrorType": "NoMatchingError"
-          }
-        ]
-      }
-    },
-    {
-      "Parameters": {
-        "Attributes": {
-          "Distribute by percentage": "3%"
-        },
-        "TargetContact": "Current"
-      },
-      "Identifier": "20ce10cc-3da5-4382-8dab-955cb9b9c18a",
-      "Type": "UpdateContactAttributes",
-      "Transitions": {
-        "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
-        "Errors": [
-          {
-            "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
-            "ErrorType": "NoMatchingError"
-          }
-        ]
-      }
-    },
-    {
-      "Parameters": {
-        "Attributes": {
-          "Distribute by percentage": "5%"
-        },
-        "TargetContact": "Current"
-      },
-      "Identifier": "0813f615-37a7-489d-b231-8a704b3b626c",
-      "Type": "UpdateContactAttributes",
-      "Transitions": {
-        "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
-        "Errors": [
-          {
-            "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
-            "ErrorType": "NoMatchingError"
-          }
-        ]
-      }
-    },
-    {
-      "Parameters": {
-        "Attributes": {
-          "Distribute by percentage": "8%"
-        },
-        "TargetContact": "Current"
-      },
-      "Identifier": "31205365-8e53-4230-9e7d-62a707df30c0",
-      "Type": "UpdateContactAttributes",
-      "Transitions": {
-        "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
-        "Errors": [
-          {
-            "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
-            "ErrorType": "NoMatchingError"
-          }
-        ]
-      }
-    },
-    {
-      "Parameters": {
-        "Attributes": {
-          "Distribute by percentage": "11%"
-        },
-        "TargetContact": "Current"
-      },
-      "Identifier": "e9721541-41f4-4cbc-bd41-bf249eb2ecef",
-      "Type": "UpdateContactAttributes",
-      "Transitions": {
-        "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
-        "Errors": [
-          {
-            "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
-            "ErrorType": "NoMatchingError"
-          }
-        ]
-      }
-    },
-    {
-      "Parameters": {
-        "Attributes": {
-          "Distribute by percentage": "14%"
-        },
-        "TargetContact": "Current"
-      },
-      "Identifier": "c6733680-b6cc-4fef-9f10-f16370a147ab",
-      "Type": "UpdateContactAttributes",
-      "Transitions": {
-        "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
-        "Errors": [
-          {
-            "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
-            "ErrorType": "NoMatchingError"
-          }
-        ]
-      }
-    },
-    {
-      "Parameters": {
-        "Attributes": {
-          "Distribute by percentage": "17%"
-        },
-        "TargetContact": "Current"
-      },
-      "Identifier": "a4b2a1ea-311c-4896-96e6-675a951f4234",
-      "Type": "UpdateContactAttributes",
-      "Transitions": {
-        "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
-        "Errors": [
-          {
-            "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
-            "ErrorType": "NoMatchingError"
-          }
-        ]
-      }
-    },
-    {
-      "Parameters": {
-        "Attributes": {
-          "Distribute by percentage": "6%"
-        },
-        "TargetContact": "Current"
-      },
-      "Identifier": "6bd7e1a8-6a8b-4adb-afcb-a52c7ea45520",
-      "Type": "UpdateContactAttributes",
-      "Transitions": {
-        "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
-        "Errors": [
-          {
-            "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
-            "ErrorType": "NoMatchingError"
-          }
-        ]
-      }
-    },
-    {
-      "Parameters": {
-        "Attributes": {
-          "Distribute by percentage": "3%"
-        },
-        "TargetContact": "Current"
-      },
-      "Identifier": "734f8208-42be-4d73-a7f6-b754b93b064d",
-      "Type": "UpdateContactAttributes",
-      "Transitions": {
-        "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
-        "Errors": [
-          {
-            "NextAction": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
-            "ErrorType": "NoMatchingError"
-          }
-        ]
-      }
-    },
-    {
-      "Parameters": {
-        "Text": "Now transferring back to the main menu."
-      },
-      "Identifier": "f1bd6ea7-c8e9-4d2f-9c1e-13aab35caf77",
-      "Type": "MessageParticipant",
-      "Transitions": {
-        "NextAction": "bdc8e490-d2e1-4e45-9c5f-34612f60a846"
-      }
+      "Type": "DistributeByPercentage"
     }
   ]
 }

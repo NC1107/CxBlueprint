@@ -72,28 +72,8 @@ def create_transfer_demo():
 
 def main():
     hello_data, goodbye_data = create_transfer_demo()
-    
-    print("\n" + "="*60)
-    print("TECHNICAL DETAILS")
-    print("="*60)
-    
-    print("\n📋 Hello Flow Structure:")
-    for i, action in enumerate(hello_data['Actions']):
-        action_type = action['Type']
-        action_id = action['Identifier'][:8]
-        print(f"   {i+1}. {action_id} - {action_type}")
-        
-        if action_type == 'TransferToFlow':
-            flow_id = action['Parameters']['ContactFlowId']
-            print(f"      → Transfers to: {flow_id[-40:]}")
-    
-    print("\n📋 Goodbye Flow Structure:")
-    for i, action in enumerate(goodbye_data['Actions']):
-        action_type = action['Type'] 
-        action_id = action['Identifier'][:8]
-        print(f"   {i+1}. {action_id} - {action_type}")
-    
-    print("\n✅ Transfer flows created successfully!")
+    print(f"Generated hello flow with {len(hello_data['Actions'])} blocks")
+    print(f"Generated goodbye flow with {len(goodbye_data['Actions'])} blocks")
 
 
 if __name__ == "__main__":

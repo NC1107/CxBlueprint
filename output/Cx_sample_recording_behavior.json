@@ -103,7 +103,7 @@
         },
         "useDynamic": false,
         "ContactFlow": {
-          "id": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/bace5b35-18f0-423a-b358-7dbed1ca76ef",
+          "id": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/5b57acfa-00ef-44ba-ba6f-7227ed683621",
           "text": "Sample inbound flow (first contact experience)"
         }
       },
@@ -217,8 +217,8 @@
       "Type": "GetParticipantInput",
       "Parameters": {
         "Text": "Press 1 to turn on agent and customer recording. \nPress 2 to turn on agent only recording. \nPress 3 to turn on customer only recording. \nPress 4 to turn off all recording.",
-        "StoreInput": "False",
-        "InputTimeLimitSeconds": "8"
+        "InputTimeLimitSeconds": "8",
+        "StoreInput": "False"
       },
       "Transitions": {
         "NextAction": "5a3c5b08-e33b-4485-bd6b-90351c480fc1",
@@ -321,7 +321,7 @@
       "Identifier": "9b30963a-505a-425a-8a5a-c9fc2e4abd7e",
       "Type": "TransferToFlow",
       "Parameters": {
-        "ContactFlowId": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/bace5b35-18f0-423a-b358-7dbed1ca76ef"
+        "ContactFlowId": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/5b57acfa-00ef-44ba-ba6f-7227ed683621"
       },
       "Transitions": {
         "NextAction": "7cbaf36b-2899-43f5-b834-333a68d2067a",

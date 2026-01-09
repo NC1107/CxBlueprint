@@ -1,0 +1,31 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "start",
+  "Actions": [
+    {
+      "Identifier": "start",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "Text": "Hello world"
+      },
+      "Transitions": {
+        "NextAction": "end"
+      }
+    },
+    {
+      "Identifier": "end",
+      "Type": "DisconnectParticipant",
+      "Parameters": {},
+      "Transitions": {}
+    }
+  ],
+  "Metadata": {
+    "entryPointPosition": {"x": 0, "y": 0},
+    "snapToGrid": false,
+    "ActionMetadata": {
+      "start": {"position": {"x": 150, "y": 40}},
+      "end": {"position": {"x": 150, "y": 290}}
+    },
+    "Annotations": []
+  }
+}

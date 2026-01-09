@@ -1,47 +1,100 @@
+"""
+Amazon Connect Flow Blocks
+https://docs.aws.amazon.com/connect/latest/APIReference/contact-actions.html
+"""
+# Base class
 from .base import FlowBlock
-from .disconnect_participant import DisconnectParticipant
-from .message_participant import MessageParticipant
-from .message_participant_iteratively import MessageParticipantIteratively
-from .end_flow_execution import EndFlowExecution
-from .update_contact_recording_behavior import UpdateContactRecordingBehavior
-from .transfer_to_flow import TransferToFlow
-from .update_contact_attributes import UpdateContactAttributes
-from .get_participant_input import GetParticipantInput
-from .update_contact_target_queue import UpdateContactTargetQueue
-from .transfer_contact_to_queue import TransferContactToQueue
-from .compare import Compare
-from .invoke_lambda_function import InvokeLambdaFunction
-from .wait import Wait
-from .distribute_by_percentage import DistributeByPercentage
-from .check_hours_of_operation import CheckHoursOfOperation
-from .check_metric_data import CheckMetricData
-from .create_callback_contact import CreateCallbackContact
-from .update_contact_callback_number import UpdateContactCallbackNumber
-from .update_contact_event_hooks import UpdateContactEventHooks
-from .update_contact_routing_behavior import UpdateContactRoutingBehavior
-from .create_task import CreateTask
+
+# Shared types
+from .types import (
+    Media,
+    LexV2Bot,
+    LexBot,
+    ViewResource,
+    PhoneNumberValidation,
+    CustomValidation,
+    InputValidation,
+    InputEncryption,
+    DTMFConfiguration,
+)
+
+# Participant Actions
+from .participant_actions import (
+    DisconnectParticipant,
+    GetParticipantInput,
+    MessageParticipant,
+    MessageParticipantIteratively,
+    ConnectParticipantWithLexBot,
+    ShowView,
+)
+
+# Flow Control Actions
+from .flow_control_actions import (
+    CheckHoursOfOperation,
+    CheckMetricData,
+    Compare,
+    DistributeByPercentage,
+    EndFlowExecution,
+    TransferToFlow,
+    Wait,
+)
+
+# Contact Actions
+from .contact_actions import (
+    CreateTask,
+    TransferContactToQueue,
+    UpdateContactAttributes,
+    UpdateContactCallbackNumber,
+    UpdateContactEventHooks,
+    UpdateContactRecordingBehavior,
+    UpdateContactRoutingBehavior,
+    UpdateContactTargetQueue,
+)
+
+# Interactions
+from .interactions import (
+    CreateCallbackContact,
+    InvokeLambdaFunction,
+)
 
 __all__ = [
+    # Base
     "FlowBlock",
+    # Types
+    "Media",
+    "LexV2Bot",
+    "LexBot",
+    "ViewResource",
+    "PhoneNumberValidation",
+    "CustomValidation",
+    "InputValidation",
+    "InputEncryption",
+    "DTMFConfiguration",
+    # Participant Actions
     "DisconnectParticipant",
+    "GetParticipantInput",
     "MessageParticipant",
     "MessageParticipantIteratively",
-    "EndFlowExecution",
-    "UpdateContactRecordingBehavior",
-    "TransferToFlow",
-    "UpdateContactAttributes",
-    "GetParticipantInput",
-    "UpdateContactTargetQueue",
-    "TransferContactToQueue",
-    "Compare",
-    "InvokeLambdaFunction",
-    "Wait",
-    "DistributeByPercentage",
+    "ConnectParticipantWithLexBot",
+    "ShowView",
+    # Flow Control Actions
     "CheckHoursOfOperation",
     "CheckMetricData",
-    "CreateCallbackContact",
+    "Compare",
+    "DistributeByPercentage",
+    "EndFlowExecution",
+    "TransferToFlow",
+    "Wait",
+    # Contact Actions
+    "CreateTask",
+    "TransferContactToQueue",
+    "UpdateContactAttributes",
     "UpdateContactCallbackNumber",
     "UpdateContactEventHooks",
+    "UpdateContactRecordingBehavior",
     "UpdateContactRoutingBehavior",
-    "CreateTask",
+    "UpdateContactTargetQueue",
+    # Interactions
+    "CreateCallbackContact",
+    "InvokeLambdaFunction",
 ]

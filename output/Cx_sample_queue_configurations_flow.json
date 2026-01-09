@@ -19,7 +19,7 @@
           "y": 53.41892501396316
         },
         "contactFlow": {
-          "id": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/090e57fb-d694-4c84-bfae-7af999ef687e",
+          "id": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/029d46b3-062e-4f0e-ab54-81fab16020d2",
           "text": "Default customer queue"
         },
         "customerOrAgent": true,
@@ -108,7 +108,7 @@
         },
         "useDynamic": false,
         "queue": {
-          "id": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/queue/b14944d1-2487-4c16-ad39-072ad6d670c3",
+          "id": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/queue/3255eeac-d063-4385-9279-e533871be5ab",
           "text": "BasicQueue"
         }
       },
@@ -325,7 +325,7 @@
           "y": 877.4189250139632
         },
         "contactFlow": {
-          "id": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/dcc0df35-917d-4ffd-bdc2-3a1fcca80b02",
+          "id": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/5fb2ffd8-11cb-4c2b-bc44-774ffed46230",
           "text": "Sample interruptible queue flow with callback"
         },
         "customerOrAgent": true,
@@ -339,7 +339,7 @@
       "Type": "UpdateContactEventHooks",
       "Parameters": {
         "EventHooks": {
-          "CustomerQueue": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/090e57fb-d694-4c84-bfae-7af999ef687e"
+          "CustomerQueue": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/029d46b3-062e-4f0e-ab54-81fab16020d2"
         }
       },
       "Transitions": {
@@ -481,7 +481,7 @@
       "Identifier": "5cfb3fa1-78a7-4133-b553-ca7198181192",
       "Type": "UpdateContactTargetQueue",
       "Parameters": {
-        "QueueId": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/queue/b14944d1-2487-4c16-ad39-072ad6d670c3"
+        "QueueId": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/queue/3255eeac-d063-4385-9279-e533871be5ab"
       },
       "Transitions": {
         "NextAction": "dbb742ec-5005-403b-896b-30b7cbf63732",
@@ -578,8 +578,8 @@
       "Type": "GetParticipantInput",
       "Parameters": {
         "Text": "Press 1 to move to the front of the queue or press 2 to move behind existing contacts already in queue.",
-        "StoreInput": "False",
-        "InputTimeLimitSeconds": "5"
+        "InputTimeLimitSeconds": "5",
+        "StoreInput": "False"
       },
       "Transitions": {
         "NextAction": "3c52961e-581a-42b5-87b9-41c7fee5dbf9",
@@ -804,8 +804,8 @@
       "Type": "GetParticipantInput",
       "Parameters": {
         "Text": "Enter the number you would like to be called back at.",
-        "StoreInput": "True",
         "InputTimeLimitSeconds": "6",
+        "StoreInput": "True",
         "InputValidation": {
           "PhoneNumberValidation": {
             "NumberFormat": "Local",
@@ -891,8 +891,8 @@
       "Type": "GetParticipantInput",
       "Parameters": {
         "Text": "Press 1 to go into queue or 2 to enter a callback number.",
-        "StoreInput": "False",
-        "InputTimeLimitSeconds": "5"
+        "InputTimeLimitSeconds": "5",
+        "StoreInput": "False"
       },
       "Transitions": {
         "NextAction": "049d9571-48bf-4fa9-9b63-683288ddb456",
@@ -937,7 +937,7 @@
       "Type": "UpdateContactEventHooks",
       "Parameters": {
         "EventHooks": {
-          "CustomerQueue": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/dcc0df35-917d-4ffd-bdc2-3a1fcca80b02"
+          "CustomerQueue": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/5fb2ffd8-11cb-4c2b-bc44-774ffed46230"
         }
       },
       "Transitions": {

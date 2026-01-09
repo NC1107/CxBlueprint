@@ -26,13 +26,5 @@ def create_simple_flow():
 
 
 if __name__ == "__main__":
-    print("Creating simple flow from code...")
     flow = create_simple_flow()
-    
-    print(f"\nFlow details:")
-    print(f"  Name: {flow.name}")
-    print(f"  Blocks: {len(flow.blocks)}")
-    print(f"  Start action: {flow._start_action}")
-    
-    for block in flow.blocks:
-        print(f"    - {block.type} (ID: {block.identifier[:8]}...)")
+    print(f"Generated {flow.name} with {len(flow.blocks)} blocks")

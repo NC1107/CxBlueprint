@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Validate a contact flow by attempting to create it in Amazon Connect
+# Validate a contact flow by creating and deleting it in Amazon Connect
 # Usage: ./validate_flow.sh <flow_file.json>
 
-INSTANCE_ID="082e847c-8736-4d4d-b74b-2ca68376897a"
+INSTANCE_ID="e1587ab3-b10f-405d-b621-8f8a26669655"
 PROFILE="cxforge"
 
 if [ $# -eq 0 ]; then
@@ -14,81 +14,39 @@ fi
 FLOW_FILE="$1"
 
 if [ ! -f "$FLOW_FILE" ]; then
-    echo "Error: File '$FLOW_FILE' not found"
+    echo "Error: File not found"
     exit 1
 fi
 
-echo "============================================================"
-echo "Contact Flow Validator"
-echo "============================================================"
-echo "File: $FLOW_FILE"
-echo ""
+echo "Validating $(basename "$FLOW_FILE")..."
 
-# Generate a test flow name with timestamp
+# Create test flow
 TIMESTAMP=$(date +%s)
 TEST_FLOW_NAME="test_validation_${TIMESTAMP}"
-
-echo "Attempting to create test flow: $TEST_FLOW_NAME"
-
-# Read the flow content
 FLOW_CONTENT=$(cat "$FLOW_FILE" | jq -c '.')
 
-# Always use CONTACT_FLOW type for validation
-FLOW_TYPE="CONTACT_FLOW"
-
-echo "Flow type: $FLOW_TYPE"
-
-# Attempt to create the contact flow
 result=$(aws connect create-contact-flow \
   --instance-id "$INSTANCE_ID" \
   --name "$TEST_FLOW_NAME" \
-  --type "$FLOW_TYPE" \
+  --type "CONTACT_FLOW" \
   --content "$FLOW_CONTENT" \
   --profile "$PROFILE" \
   --output json 2>&1)
 
-exit_code=$?
-
-if [ $exit_code -eq 0 ]; then
-    echo "[VALID] Flow is valid and can be created in Connect"
+if [ $? -eq 0 ]; then
+    echo "✓ Valid"
     
-    # Extract the flow ID and ARN
+    # Clean up
     flow_id=$(echo "$result" | jq -r '.ContactFlowId')
-    flow_arn=$(echo "$result" | jq -r '.ContactFlowArn')
-    
-    echo " FLOWlow ID: $flow_id"
-    echo ""
-    
-    # Clean up - delete the test flow
-    echo "Cleaning up test flow..."
     aws connect delete-contact-flow \
       --instance-id "$INSTANCE_ID" \
       --contact-flow-id "$flow_id" \
       --profile "$PROFILE" \
       --output json 2>&1 > /dev/null
     
-    if [ $? -eq 0 ]; then
-        echo "[OK] Test flow deleted"
-    else
-        echo "[WARNING] Could not delete test flow $flow_id"
-        echo "   You may need to delete it manually"
-    fi
-    
     exit 0
 else
-    echo "[INVALID] Flow validation failed"
-    echo ""
-    echo "Error details:"
-    echo "$result" | grep -A 10 "error"
-    
-    # Check for specific error types
-    if echo "$result" | grep -q "InvalidContactFlowException"; then
-        echo ""
-        echo "This is an InvalidContactFlowException - the flow structure is invalid"
-    elif echo "$result" | grep -q "InvalidParameterException"; then
-        echo ""
-        echo "This is an InvalidParameterException - check parameter values"
-    fi
-    
+    echo "✗ Invalid"
+    echo "$result" | grep -i "error" | head -3
     exit 1
 fi

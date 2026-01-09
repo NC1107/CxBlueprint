@@ -38,20 +38,5 @@ def create_menu_flow():
 
 
 if __name__ == "__main__":
-    print("Creating menu flow from code...")
     flow = create_menu_flow()
-    
-    print(f"\nFlow details:")
-    print(f"  Name: {flow.name}")
-    print(f"  Blocks: {len(flow.blocks)}")
-    print(f"  Start action: {flow._start_action}")
-    
-    for block in flow.blocks:
-        print(f"    - {block.type} (ID: {block.identifier[:8]}...)")
-    
-    print("\nFlow structure:")
-    print("  1. Welcome message")
-    print("  2. Menu (press 1 or 2)")
-    print("  3. If 1 -> say 'Oranges'")
-    print("  4. If 2 -> say 'Apples'")
-    print("  5. Disconnect")
+    print(f"Generated {flow.name} with {len(flow.blocks)} blocks")

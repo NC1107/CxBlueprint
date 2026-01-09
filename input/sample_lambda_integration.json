@@ -112,7 +112,7 @@
         },
         "useDynamic": false,
         "ContactFlow": {
-          "id": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/bace5b35-18f0-423a-b358-7dbed1ca76ef",
+          "id": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/5b57acfa-00ef-44ba-ba6f-7227ed683621",
           "text": "Sample inbound flow (first contact experience)"
         }
       },
@@ -295,7 +295,7 @@
     {
       "Identifier": "94cd8c74-9a86-41bd-8fe2-d08bc8f9e41e",
       "Parameters": {
-        "ContactFlowId": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/bace5b35-18f0-423a-b358-7dbed1ca76ef"
+        "ContactFlowId": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/5b57acfa-00ef-44ba-ba6f-7227ed683621"
       },
       "Transitions": {
         "NextAction": "31dd3a3e-7d66-4829-9252-8ea344160f5e",

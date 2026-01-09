@@ -1,0 +1,348 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "260281ee-e37b-432c-974a-7bcc6e27676f",
+  "Metadata": {
+    "entryPointPosition": {
+      "x": 0,
+      "y": 0
+    },
+    "snapToGrid": false,
+    "ActionMetadata": {
+      "260281ee-e37b-432c-974a-7bcc6e27676f": {
+        "position": {
+          "x": 150,
+          "y": 40
+        }
+      },
+      "5256138a-3895-4f96-bcad-2d36e6763744": {
+        "position": {
+          "x": 150,
+          "y": 290
+        }
+      },
+      "c5c52448-7b75-46e0-a021-0f354a3da430": {
+        "position": {
+          "x": 150,
+          "y": 540
+        }
+      },
+      "0f7ee46e-d430-48e8-a2c7-72a46830ce10": {
+        "position": {
+          "x": 350,
+          "y": 540
+        }
+      },
+      "4494e713-9605-4d07-be3c-0b24f2790366": {
+        "position": {
+          "x": 550,
+          "y": 540
+        }
+      },
+      "59487def-bf58-4da3-94ba-4b5db747a9db": {
+        "position": {
+          "x": 750,
+          "y": 540
+        }
+      },
+      "b2f72b7b-cb66-4c88-9a32-e97913f59602": {
+        "position": {
+          "x": 150,
+          "y": 790
+        }
+      },
+      "811c2c9b-c4b0-496a-b53f-4fbc93243abc": {
+        "position": {
+          "x": 350,
+          "y": 790
+        }
+      },
+      "310d1bc9-efa2-482e-bd43-654d0af27cc5": {
+        "position": {
+          "x": 550,
+          "y": 790
+        }
+      },
+      "519aa5b3-a147-4736-b5fb-a029c6fbf50d": {
+        "position": {
+          "x": 750,
+          "y": 790
+        }
+      },
+      "143184e6-094c-4de0-a938-6fe86adb0130": {
+        "position": {
+          "x": 150,
+          "y": 1040
+        }
+      },
+      "dfe3f398-762a-4633-8c21-227cf40d3198": {
+        "position": {
+          "x": 350,
+          "y": 1040
+        }
+      },
+      "80b115c6-7896-43a5-86d9-6b7b265009ab": {
+        "position": {
+          "x": 550,
+          "y": 1040
+        }
+      },
+      "3d531f99-f9b8-4d0f-bdf4-c7c3dd00348d": {
+        "position": {
+          "x": 750,
+          "y": 1040
+        }
+      },
+      "221246aa-3d63-4efc-a0a3-537a065e9179": {
+        "position": {
+          "x": 150,
+          "y": 1290
+        }
+      },
+      "bbb3de0f-af3a-4fda-8307-e016c374e927": {
+        "position": {
+          "x": 350,
+          "y": 1290
+        }
+      },
+      "e7729105-0bcd-4fc8-a316-16544cc5c3e8": {
+        "position": {
+          "x": 150,
+          "y": 1540
+        }
+      }
+    },
+    "Annotations": []
+  },
+  "Actions": [
+    {
+      "Identifier": "260281ee-e37b-432c-974a-7bcc6e27676f",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "Text": "Welcome to our advanced support system."
+      },
+      "Transitions": {
+        "NextAction": "5256138a-3895-4f96-bcad-2d36e6763744"
+      }
+    },
+    {
+      "Identifier": "5256138a-3895-4f96-bcad-2d36e6763744",
+      "Type": "GetParticipantInput",
+      "Parameters": {
+        "Text": "Press 1 for account info, 2 for technical support, or 3 for billing.",
+        "InputTimeLimitSeconds": "10",
+        "StoreInput": "False"
+      },
+      "Transitions": {
+        "Conditions": [
+          {
+            "NextAction": "c5c52448-7b75-46e0-a021-0f354a3da430",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "1"
+              ]
+            }
+          },
+          {
+            "NextAction": "0f7ee46e-d430-48e8-a2c7-72a46830ce10",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "2"
+              ]
+            }
+          },
+          {
+            "NextAction": "4494e713-9605-4d07-be3c-0b24f2790366",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "3"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "59487def-bf58-4da3-94ba-4b5db747a9db",
+            "ErrorType": "NoMatchError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "c5c52448-7b75-46e0-a021-0f354a3da430",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "Text": "Let me check your balance..."
+      },
+      "Transitions": {
+        "NextAction": "b2f72b7b-cb66-4c88-9a32-e97913f59602"
+      }
+    },
+    {
+      "Identifier": "b2f72b7b-cb66-4c88-9a32-e97913f59602",
+      "Type": "InvokeLambdaFunction",
+      "Parameters": {
+        "LambdaFunctionARN": "{{BALANCE_LAMBDA_ARN}}",
+        "InvocationTimeLimitSeconds": "10"
+      },
+      "Transitions": {
+        "NextAction": "143184e6-094c-4de0-a938-6fe86adb0130"
+      }
+    },
+    {
+      "Identifier": "143184e6-094c-4de0-a938-6fe86adb0130",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "Text": "Your current balance is..."
+      },
+      "Transitions": {
+        "NextAction": "221246aa-3d63-4efc-a0a3-537a065e9179"
+      }
+    },
+    {
+      "Identifier": "0f7ee46e-d430-48e8-a2c7-72a46830ce10",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "Text": "Connecting you to our AI technical assistant..."
+      },
+      "Transitions": {
+        "NextAction": "811c2c9b-c4b0-496a-b53f-4fbc93243abc"
+      }
+    },
+    {
+      "Identifier": "811c2c9b-c4b0-496a-b53f-4fbc93243abc",
+      "Type": "ConnectParticipantWithLexBot",
+      "Parameters": {
+        "Text": "How can I help you with technical support today?",
+        "LexV2Bot": {
+          "AliasArn": "{{LEX_BOT_ARN}}"
+        },
+        "LexSessionAttributes": {
+          "category": "technical"
+        }
+      },
+      "Transitions": {
+        "Conditions": [
+          {
+            "NextAction": "dfe3f398-762a-4633-8c21-227cf40d3198",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "ResetPassword"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "dfe3f398-762a-4633-8c21-227cf40d3198",
+      "Type": "InvokeLambdaFunction",
+      "Parameters": {
+        "LambdaFunctionARN": "{{RESET_PASSWORD_LAMBDA_ARN}}",
+        "InvocationTimeLimitSeconds": "8"
+      },
+      "Transitions": {
+        "NextAction": "bbb3de0f-af3a-4fda-8307-e016c374e927"
+      }
+    },
+    {
+      "Identifier": "bbb3de0f-af3a-4fda-8307-e016c374e927",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "Text": "I've sent a password reset link to your email."
+      },
+      "Transitions": {
+        "NextAction": "221246aa-3d63-4efc-a0a3-537a065e9179"
+      }
+    },
+    {
+      "Identifier": "4494e713-9605-4d07-be3c-0b24f2790366",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "Text": "Let me pull up your billing information..."
+      },
+      "Transitions": {
+        "NextAction": "310d1bc9-efa2-482e-bd43-654d0af27cc5"
+      }
+    },
+    {
+      "Identifier": "310d1bc9-efa2-482e-bd43-654d0af27cc5",
+      "Type": "ShowView",
+      "Parameters": {
+        "ViewResource": {
+          "Id": "{{BILLING_VIEW_ID}}",
+          "Version": "1.0"
+        },
+        "ViewData": {
+          "type": "billing",
+          "detailed": "true"
+        }
+      },
+      "Transitions": {
+        "NextAction": "80b115c6-7896-43a5-86d9-6b7b265009ab"
+      }
+    },
+    {
+      "Identifier": "80b115c6-7896-43a5-86d9-6b7b265009ab",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "Text": "I've displayed your billing details."
+      },
+      "Transitions": {
+        "NextAction": "221246aa-3d63-4efc-a0a3-537a065e9179"
+      }
+    },
+    {
+      "Identifier": "59487def-bf58-4da3-94ba-4b5db747a9db",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "Text": "I didn't understand your selection. Let me create a support ticket."
+      },
+      "Transitions": {
+        "NextAction": "519aa5b3-a147-4736-b5fb-a029c6fbf50d"
+      }
+    },
+    {
+      "Identifier": "519aa5b3-a147-4736-b5fb-a029c6fbf50d",
+      "Type": "CreateTask",
+      "Parameters": {
+        "Name": "Customer Support Request",
+        "Description": "Follow up on unclear customer input",
+        "TemplateId": "{{SUPPORT_TASK_TEMPLATE}}",
+        "Priority": "2"
+      },
+      "Transitions": {
+        "NextAction": "3d531f99-f9b8-4d0f-bdf4-c7c3dd00348d"
+      }
+    },
+    {
+      "Identifier": "3d531f99-f9b8-4d0f-bdf4-c7c3dd00348d",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "Text": "A support representative will contact you shortly."
+      },
+      "Transitions": {
+        "NextAction": "221246aa-3d63-4efc-a0a3-537a065e9179"
+      }
+    },
+    {
+      "Identifier": "221246aa-3d63-4efc-a0a3-537a065e9179",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "Text": "Thank you for contacting us. Goodbye!"
+      },
+      "Transitions": {
+        "NextAction": "e7729105-0bcd-4fc8-a316-16544cc5c3e8"
+      }
+    },
+    {
+      "Identifier": "e7729105-0bcd-4fc8-a316-16544cc5c3e8",
+      "Type": "DisconnectParticipant",
+      "Parameters": {},
+      "Transitions": {}
+    }
+  ]
+}

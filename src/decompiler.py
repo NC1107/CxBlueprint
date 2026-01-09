@@ -2,14 +2,18 @@ import json
 from typing import Dict, Type
 from blocks import (
     FlowBlock,
+    # Participant Actions
     DisconnectParticipant,
     MessageParticipant,
     MessageParticipantIteratively,
+    GetParticipantInput,
+    ConnectParticipantWithLexBot,
+    ShowView,
+    # Other blocks
     EndFlowExecution,
     UpdateContactRecordingBehavior,
     TransferToFlow,
     UpdateContactAttributes,
-    GetParticipantInput,
     UpdateContactTargetQueue,
     TransferContactToQueue,
     Compare,
@@ -32,14 +36,18 @@ class FlowDecompiler:
     
     # Map AWS block types to Python classes
     BLOCK_TYPE_MAP: Dict[str, Type[FlowBlock]] = {
+        # Participant Actions
         "DisconnectParticipant": DisconnectParticipant,
         "MessageParticipant": MessageParticipant,
         "MessageParticipantIteratively": MessageParticipantIteratively,
+        "GetParticipantInput": GetParticipantInput,
+        "ConnectParticipantWithLexBot": ConnectParticipantWithLexBot,
+        "ShowView": ShowView,
+        # Other blocks
         "EndFlowExecution": EndFlowExecution,
         "UpdateContactRecordingBehavior": UpdateContactRecordingBehavior,
         "TransferToFlow": TransferToFlow,
         "UpdateContactAttributes": UpdateContactAttributes,
-        "GetParticipantInput": GetParticipantInput,
         "UpdateContactTargetQueue": UpdateContactTargetQueue,
         "TransferContactToQueue": TransferContactToQueue,
         "Compare": Compare,

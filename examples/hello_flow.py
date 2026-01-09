@@ -25,16 +25,8 @@ def create_hello_flow():
 
 
 def main():
-    print("\n" + "="*50)
-    print("HELLO FLOW - Transfer Example")
-    print("="*50)
-    print("\nFlow structure:")
-    print("  Hello Message → Transfer to Goodbye Flow")
-    print()
-    
     flow = create_hello_flow()
     
-    # Compile and save
     from pathlib import Path
     import json
     
@@ -45,9 +37,7 @@ def main():
     with open(output_path, 'w') as f:
         json.dump(compiled, f, indent=2)
     
-    print(f"✅ Hello Flow compiled to: {output_path}")
-    print(f"   Total blocks: {len(compiled['Actions'])}")
-    print(f"   Positioned blocks: {len(compiled['Metadata']['ActionMetadata'])}")
+    print(f"Generated {flow.name} with {len(compiled['Actions'])} blocks")
 
 
 if __name__ == "__main__":

@@ -66,7 +66,7 @@
         },
         "useDynamic": false,
         "ContactFlow": {
-          "id": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/b141df59-e30d-4769-ac71-38b4c6702a85",
+          "id": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/181f706a-382d-4944-8bc3-59df8be22138",
           "text": "Sample secure input with no agent"
         }
       },
@@ -77,7 +77,7 @@
         },
         "useDynamic": false,
         "ContactFlow": {
-          "id": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/7b3e376b-fc57-4c4f-aff4-ad74d31ef6c0",
+          "id": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/e31ed72c-a9af-449b-b766-c352d5d1a473",
           "text": "Sample Lambda integration"
         }
       },
@@ -88,7 +88,7 @@
         },
         "useDynamic": false,
         "ContactFlow": {
-          "id": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/d109fbb4-cc64-42ba-bc53-92170f9a07d0",
+          "id": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/cb2231a3-46ed-4054-987b-38e980de7c18",
           "text": "Sample note for screenpop"
         }
       },
@@ -99,7 +99,7 @@
         },
         "useDynamic": false,
         "ContactFlow": {
-          "id": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/1b7eba6e-e767-44e4-8027-4e06b9630c3a",
+          "id": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/34c7a29e-8bc9-4a65-b6f5-9bcea597ec94",
           "text": "Sample AB test"
         }
       },
@@ -110,7 +110,7 @@
         },
         "useDynamic": false,
         "ContactFlow": {
-          "id": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/1a3f5518-9d1d-4991-bba0-327ae75486f3",
+          "id": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/f99a3cb9-c3b3-4654-b6af-c00b040d7830",
           "text": "Sample Queue Configurations Flow"
         }
       },
@@ -121,7 +121,7 @@
         },
         "useDynamic": false,
         "ContactFlow": {
-          "id": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/c007162f-8085-4254-a540-14a664811fcf",
+          "id": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/1e1600bd-3b0d-4069-8d8f-8c3871996bdf",
           "text": "Sample recording behavior"
         }
       },
@@ -208,7 +208,7 @@
         },
         "useDynamicContactFlow": false,
         "ContactFlow": {
-          "id": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/bace5b35-18f0-423a-b358-7dbed1ca76ef",
+          "id": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/5b57acfa-00ef-44ba-ba6f-7227ed683621",
           "text": "Sample inbound flow (first contact experience)"
         }
       }
@@ -239,7 +239,7 @@
       "Type": "UpdateContactEventHooks",
       "Parameters": {
         "EventHooks": {
-          "CustomerRemaining": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/858d9b1c-96e7-451d-b922-45793d2dbc5d"
+          "CustomerRemaining": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/765fb930-7919-48e8-ade2-d50fd9c31e46"
         }
       },
       "Transitions": {
@@ -305,7 +305,7 @@
       "Identifier": "f9d359f6-ab58-416a-8d69-d721cf49a2df",
       "Type": "TransferToFlow",
       "Parameters": {
-        "ContactFlowId": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/b141df59-e30d-4769-ac71-38b4c6702a85"
+        "ContactFlowId": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/181f706a-382d-4944-8bc3-59df8be22138"
       },
       "Transitions": {
         "NextAction": "7c0a92c0-3a0d-4941-9d0e-2ae0e16ce58b",
@@ -322,7 +322,7 @@
       "Identifier": "4c568499-9a87-46d1-87e2-213ebaf81c4e",
       "Type": "TransferToFlow",
       "Parameters": {
-        "ContactFlowId": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/7b3e376b-fc57-4c4f-aff4-ad74d31ef6c0"
+        "ContactFlowId": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/e31ed72c-a9af-449b-b766-c352d5d1a473"
       },
       "Transitions": {
         "NextAction": "7c0a92c0-3a0d-4941-9d0e-2ae0e16ce58b",
@@ -339,7 +339,7 @@
       "Identifier": "6d68b65b-787d-4359-a58b-23959a0c18d7",
       "Type": "TransferToFlow",
       "Parameters": {
-        "ContactFlowId": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/d109fbb4-cc64-42ba-bc53-92170f9a07d0"
+        "ContactFlowId": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/cb2231a3-46ed-4054-987b-38e980de7c18"
       },
       "Transitions": {
         "NextAction": "7c0a92c0-3a0d-4941-9d0e-2ae0e16ce58b",
@@ -356,7 +356,7 @@
       "Identifier": "f7ee6062-55b6-4bcf-9b06-35e5735fbad7",
       "Type": "TransferToFlow",
       "Parameters": {
-        "ContactFlowId": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/1b7eba6e-e767-44e4-8027-4e06b9630c3a"
+        "ContactFlowId": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/34c7a29e-8bc9-4a65-b6f5-9bcea597ec94"
       },
       "Transitions": {
         "NextAction": "7c0a92c0-3a0d-4941-9d0e-2ae0e16ce58b",
@@ -373,7 +373,7 @@
       "Identifier": "ae54d6c1-507d-4d6e-886e-e212cbbcf976",
       "Type": "TransferToFlow",
       "Parameters": {
-        "ContactFlowId": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/1a3f5518-9d1d-4991-bba0-327ae75486f3"
+        "ContactFlowId": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/f99a3cb9-c3b3-4654-b6af-c00b040d7830"
       },
       "Transitions": {
         "NextAction": "7c0a92c0-3a0d-4941-9d0e-2ae0e16ce58b",
@@ -390,7 +390,7 @@
       "Identifier": "3b843a8a-19c1-4f34-b874-c28a8550a352",
       "Type": "TransferToFlow",
       "Parameters": {
-        "ContactFlowId": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/c007162f-8085-4254-a540-14a664811fcf"
+        "ContactFlowId": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/1e1600bd-3b0d-4069-8d8f-8c3871996bdf"
       },
       "Transitions": {
         "NextAction": "7c0a92c0-3a0d-4941-9d0e-2ae0e16ce58b",
@@ -465,8 +465,8 @@
       "Type": "GetParticipantInput",
       "Parameters": {
         "Text": "Press 1 to be put in queue for an agent.\n2 to securely enter content. \n3 to hear the results of an AWS Lambda data dip. \n4 to set a screen pop for the agent. \n5 to roll the dice and simulate a and b testing. \n6 to set call recording behavior.\nOr 7 to create a task for an agent.",
-        "StoreInput": "False",
-        "InputTimeLimitSeconds": "8"
+        "InputTimeLimitSeconds": "8",
+        "StoreInput": "False"
       },
       "Transitions": {
         "NextAction": "3b843a8a-19c1-4f34-b874-c28a8550a352",
@@ -560,7 +560,7 @@
           "CustomerPhoneNumber": "$.CustomerEndpoint.Address",
           "Type": "inbound"
         },
-        "ContactFlowId": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/contact-flow/bace5b35-18f0-423a-b358-7dbed1ca76ef",
+        "ContactFlowId": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/contact-flow/5b57acfa-00ef-44ba-ba6f-7227ed683621",
         "Description": "Example of an agent task to investigate customer issue from sample inbound flow."
       },
       "Transitions": {

@@ -31,7 +31,7 @@ main_retry = flow.play_prompt("I didn't receive your selection. Let me repeat th
 main_input_2 = flow.get_input("Please make your selection now", timeout=10)
 main_retry.then(main_input_2)
 
-# === PATH 1: LOAN BALANCE AND PAYMENTS ===
+# Path 1: Loan balance and payments
 balance_menu = flow.play_prompt("Balance and Payments. Press 1 to hear your current balance. Press 2 to make a payment. Press 3 for payment history. Press 9 to return to the main menu.")
 balance_input = flow.get_input("Please make your selection", timeout=10)
 balance_menu.then(balance_input)
@@ -102,7 +102,7 @@ representative = flow.play_prompt("Please hold while I transfer you to the next 
 representative_disconnect = flow.disconnect()
 representative.then(representative_disconnect)
 
-# === MAIN MENU INPUT ROUTING (First Attempt) ===
+# Main menu input routing (first attempt)
 main_input_1.when("1", balance_menu).when("2", deferment_menu).when("3", consolidation_menu).when("4", representative).when("9", main_menu)
 main_input_1.otherwise(main_retry)
 main_input_1.on_error("InputTimeLimitExceeded", main_retry)
@@ -170,9 +170,9 @@ for i, (id1, pos1) in enumerate(positions):
             overlaps.append((id1[:8], pos1, id2[:8], pos2, x_dist, y_dist))
 
 if overlaps:
-    print(f'\n⚠️  Found {len(overlaps)} potential overlaps')
+    print(f'\nFound {len(overlaps)} potential overlaps')
 else:
-    print('\n✅ No overlaps detected!')
+    print('\nNo overlaps detected!')
 
 # Stats
 x_coords = [pos["x"] for _, pos in positions]

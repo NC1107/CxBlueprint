@@ -28,7 +28,7 @@
         },
         "useDynamic": false,
         "queue": {
-          "id": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/queue/b14944d1-2487-4c16-ad39-072ad6d670c3",
+          "id": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/queue/3255eeac-d063-4385-9279-e533871be5ab",
           "text": "BasicQueue"
         }
       },
@@ -83,7 +83,7 @@
     {
       "Identifier": "8595ce23-0af7-49e3-8324-22accebefd0d",
       "Parameters": {
-        "QueueId": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/queue/b14944d1-2487-4c16-ad39-072ad6d670c3"
+        "QueueId": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/queue/3255eeac-d063-4385-9279-e533871be5ab"
       },
       "Transitions": {
         "NextAction": "35dde84a-f902-4a2b-9e0d-b6079d2a5260",

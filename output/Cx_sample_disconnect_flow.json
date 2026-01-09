@@ -125,7 +125,7 @@
         },
         "useDynamic": false,
         "queue": {
-          "id": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/queue/b14944d1-2487-4c16-ad39-072ad6d670c3",
+          "id": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/queue/3255eeac-d063-4385-9279-e533871be5ab",
           "text": "BasicQueue"
         }
       },
@@ -372,8 +372,8 @@
       "Type": "GetParticipantInput",
       "Parameters": {
         "Text": "We appreciate your call. If you were happy with your service, press 1. If there was some room for improvement, press 2. If your issue is not resolved or you would like more help, press 3.",
-        "StoreInput": "False",
-        "InputTimeLimitSeconds": "5"
+        "InputTimeLimitSeconds": "5",
+        "StoreInput": "False"
       },
       "Transitions": {
         "NextAction": "0cc56c42-4d07-4986-9960-cf0b52005892",
@@ -452,8 +452,8 @@
       "Type": "GetParticipantInput",
       "Parameters": {
         "Text": "We would love to resolve your issue. If you would like to speak to another agent, press 1. If you would like to speak to a supervisor, press 2. If you would like to hang up, press 3.",
-        "StoreInput": "False",
-        "InputTimeLimitSeconds": "5"
+        "InputTimeLimitSeconds": "5",
+        "StoreInput": "False"
       },
       "Transitions": {
         "NextAction": "99b031ed-b416-428e-8916-6d45d93391e1",
@@ -506,7 +506,7 @@
       "Identifier": "afa3794a-72f6-479f-8f16-b48b343e126d",
       "Type": "UpdateContactTargetQueue",
       "Parameters": {
-        "QueueId": "arn:aws:connect:us-east-1:299145661157:instance/082e847c-8736-4d4d-b74b-2ca68376897a/queue/b14944d1-2487-4c16-ad39-072ad6d670c3"
+        "QueueId": "arn:aws:connect:us-east-1:299145661157:instance/e1587ab3-b10f-405d-b621-8f8a26669655/queue/3255eeac-d063-4385-9279-e533871be5ab"
       },
       "Transitions": {
         "NextAction": "0a1b8531-08c2-400e-a30a-c60d8cf15123",

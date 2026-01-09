@@ -24,16 +24,8 @@ def create_goodbye_flow():
 
 
 def main():
-    print("\n" + "="*50)
-    print("GOODBYE FLOW - Simple Exit Flow") 
-    print("="*50)
-    print("\nFlow structure:")
-    print("  Goodbye Message → Disconnect")
-    print()
-    
     flow = create_goodbye_flow()
     
-    # Compile and save
     from pathlib import Path
     import json
     
@@ -44,9 +36,7 @@ def main():
     with open(output_path, 'w') as f:
         json.dump(compiled, f, indent=2)
     
-    print(f"✅ Goodbye Flow compiled to: {output_path}")
-    print(f"   Total blocks: {len(compiled['Actions'])}")
-    print(f"   Start action: {compiled['StartAction'][:8]}")
+    print(f"Generated {flow.name} with {len(compiled['Actions'])} blocks")
 
 
 if __name__ == "__main__":

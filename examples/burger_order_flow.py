@@ -127,27 +127,5 @@ def create_burger_order_flow():
 
 
 if __name__ == "__main__":
-    print("Creating burger ordering flow...")
     flow = create_burger_order_flow()
-    
-    print(f"\nFlow details:")
-    print(f"  Name: {flow.name}")
-    print(f"  Total blocks: {len(flow.blocks)}")
-    print(f"  Start action: {flow._start_action[:8]}...")
-    
-    print("\nFlow structure:")
-    print("  1. Welcome")
-    print("  2. Main Menu (Order / Track / Agent)")
-    print("  3. Order path:")
-    print("     - Burger type menu (Classic / Deluxe / Veggie)")
-    print("     - Size menu for each type (S / M / L)")
-    print("     - Confirmation message")
-    print("     - Thank you")
-    print("  4. Track path:")
-    print("     - Status check")
-    print("     - Results")
-    print("     - Thank you")
-    print("  5. Agent path:")
-    print("     - Transfer message")
-    print("     - Thank you")
-    print("  6. Multiple disconnect points")
+    print(f"Generated {flow.name} with {len(flow.blocks)} blocks")

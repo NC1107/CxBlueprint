@@ -1,0 +1,54 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "389f4e40-c7f0-49b5-bdbb-039b25bcdce4",
+  "Actions": [
+    {
+      "Identifier": "389f4e40-c7f0-49b5-bdbb-039b25bcdce4",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "Text": "Thank you for calling!"
+      },
+      "Transitions": {
+        "NextAction": "ea00b61e-8808-46bc-8fb0-3a633a26342b"
+      }
+    },
+    {
+      "Identifier": "ea00b61e-8808-46bc-8fb0-3a633a26342b",
+      "Type": "InvokeLambdaFunction",
+      "Parameters": {
+        "LambdaFunctionARN": "arn:aws:lambda:us-east-1:299145661157:function:counter-demo-counter",
+        "InvocationTimeLimitSeconds": "8"
+      },
+      "Transitions": {
+        "NextAction": "3b972ccb-f2d7-47fd-902a-17c0b2603d43"
+      }
+    },
+    {
+      "Identifier": "3b972ccb-f2d7-47fd-902a-17c0b2603d43",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "Text": "You are caller number $.External.count"
+      },
+      "Transitions": {
+        "NextAction": "f0a74467-7c78-4940-94c6-e7162d5e5cb3"
+      }
+    },
+    {
+      "Identifier": "f0a74467-7c78-4940-94c6-e7162d5e5cb3",
+      "Type": "DisconnectParticipant",
+      "Parameters": {},
+      "Transitions": {}
+    }
+  ],
+  "Metadata": {
+    "entryPointPosition": {"x": 0, "y": 0},
+    "snapToGrid": false,
+    "ActionMetadata": {
+      "389f4e40-c7f0-49b5-bdbb-039b25bcdce4": {"position": {"x": 150, "y": 40}},
+      "ea00b61e-8808-46bc-8fb0-3a633a26342b": {"position": {"x": 150, "y": 290}},
+      "3b972ccb-f2d7-47fd-902a-17c0b2603d43": {"position": {"x": 150, "y": 540}},
+      "f0a74467-7c78-4940-94c6-e7162d5e5cb3": {"position": {"x": 150, "y": 790}}
+    },
+    "Annotations": []
+  }
+}
