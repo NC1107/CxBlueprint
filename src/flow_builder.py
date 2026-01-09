@@ -47,7 +47,7 @@ class ContactFlowBuilder:
     # General vertical spacing (non-conditional)
     VERTICAL_SPACING = VERTICAL_SPACING_COND_1_OPT
     
-    COLLISION_PADDING = HORIZONTAL_CENTER_SPACING  # Minimum safe distance
+    COLLISION_PADDING = BLOCK_WIDTH_STANDARD * 0.8  # Minimum safe distance (smaller than horizontal spacing)
     
     START_X = 150
     START_Y = 40
@@ -186,7 +186,7 @@ class ContactFlowBuilder:
         """
         block = UpdateContactAttributes(
             identifier=str(uuid.uuid4()),
-            parameters=attributes
+            attributes=attributes
         )
         return self._register_block(block)
     
