@@ -28,6 +28,8 @@ T = TypeVar('T', bound=FlowBlock) # Generic FlowBlock type for method returns
 
 class ContactFlowBuilder:
     """Build contact flows programmatically with BFS-based layout."""
+
+    # The Amazon Connect Canvas X increases to the right and Y increases downwards.
     
     # Layout constants - Grid-based model (all positions are center-based)
     GRID_UNIT = 19.2
@@ -313,9 +315,16 @@ class ContactFlowBuilder:
                             if child not in visited and child not in queued and child not in children:
                                 children.append(child)
                 
-                # Queue children for next level, all start at same X as parent
+                # Queue children
+                # NextAction goes horizontally (same level), others go vertically (next level)
+                next_action = transitions.get("NextAction")
                 for child_id in children:
-                    queue.append((child_id, x, level + 1))
+                    if child_id == next_action:
+                        # NextAction: Place horizontally to the right at same level
+                        queue.append((child_id, x + self.HORIZONTAL_CENTER_SPACING, level))
+                    else:
+                        # Conditions/Errors: Place vertically on next level
+                        queue.append((child_id, x, level + 1))
                     queued.add(child_id)
         
         if self.debug:

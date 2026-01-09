@@ -1,6 +1,6 @@
 {
   "Version": "2019-10-30",
-  "StartAction": "4a693f87-1899-4b6e-a296-415ad47b7479",
+  "StartAction": "12f6cb8d-140e-4424-86cd-054d1d44c1c5",
   "Metadata": {
     "entryPointPosition": {
       "x": 0,
@@ -8,16 +8,16 @@
     },
     "snapToGrid": false,
     "ActionMetadata": {
-      "4a693f87-1899-4b6e-a296-415ad47b7479": {
+      "12f6cb8d-140e-4424-86cd-054d1d44c1c5": {
         "position": {
           "x": 153.6,
           "y": 38.4
         }
       },
-      "21c3472e-1e05-4b2e-9aa4-edcb02900337": {
+      "123ceebd-8d7e-4052-88d0-a721dc5d2f75": {
         "position": {
           "x": 614.4,
-          "y": 230.39999999999998
+          "y": 38.4
         }
       }
     },
@@ -25,23 +25,23 @@
   },
   "Actions": [
     {
-      "Identifier": "4a693f87-1899-4b6e-a296-415ad47b7479",
+      "Identifier": "12f6cb8d-140e-4424-86cd-054d1d44c1c5",
       "Type": "MessageParticipant",
       "Parameters": {
         "Text": "Created from code"
       },
       "Transitions": {
-        "NextAction": "21c3472e-1e05-4b2e-9aa4-edcb02900337",
+        "NextAction": "123ceebd-8d7e-4052-88d0-a721dc5d2f75",
         "Errors": [
           {
-            "NextAction": "21c3472e-1e05-4b2e-9aa4-edcb02900337",
+            "NextAction": "123ceebd-8d7e-4052-88d0-a721dc5d2f75",
             "ErrorType": "NoMatchingError"
           }
         ]
       }
     },
     {
-      "Identifier": "21c3472e-1e05-4b2e-9aa4-edcb02900337",
+      "Identifier": "123ceebd-8d7e-4052-88d0-a721dc5d2f75",
       "Type": "DisconnectParticipant",
       "Parameters": {},
       "Transitions": {}
